@@ -2,6 +2,7 @@
 title: Windows内置Linux子系统实用手册
 tags:
   - Linux
+  - Windows
 categories:
   - 经验与技巧
 cover: https://cdn.pixabay.com/photo/2013/07/13/12/31/penguin-159784_1280.png
@@ -12,13 +13,13 @@ date: 2020-03-16 22:01:00
 
 # 1. 如何开始？
 1. 首先，我们通过`Win + S`快捷键进入搜索，搜索 开启或关闭Windows功能 并进入。开启了该功能后，重启系统。
-<!-- {% asset_img 开启适用于Linux的Windows子系统.jpg 开启适用于Linux的Windows子系统 %} -->
+![开启功能](https://zhongshijie.gitee.io/mirrors-pic/img/20200317175850.jpg)
 
 2. 随后，我们需要进入Microsoft Store中下载Linux的一个发行版，搜索Linux即可查看各个Linux的发行版。
-<!-- {% asset_img 应用商店.jpg 应用商店 %} -->
+![应用商店](https://zhongshijie.gitee.io/mirrors-pic/img/20200317180238.jpg)
 
 3. 选择一个喜欢的版本，并下载安装他们，随后启动该应用即可（作者以Ubuntu为例）。
-<!-- {% asset_img 子系统.jpg 子系统 %} -->
+![启动后](https://zhongshijie.gitee.io/mirrors-pic/img/20200317180327.jpg)
 
 4. 该Linux子系统可以直接访问windows中的文件，目录举例：
   - 本地磁盘c ： /mnt/c/
@@ -30,12 +31,12 @@ date: 2020-03-16 22:01:00
 1. Ubuntu系统默认的软件源在国内网速较慢且不稳定，我们可以考虑更换为国内的阿里云的软件源。
 
 2. 首先，我们先创建一个名为 sources.list 文本文件。
-```
+```shell
 vi sources.list
 ```
 
 3. 将以下内容粘贴到编辑器中（Vi编辑器命令：“i”进入编辑，“Esc”结束编辑，“:wq”写入并退出）。
-```
+```vi
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse

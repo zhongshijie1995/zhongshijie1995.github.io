@@ -14,14 +14,22 @@ date: 2020-03-16 22:17:49
 # 开源软件or免费软件
 **开发工具**
 - **Git 2.25.0**
+    - 版本管理工具
     - 绿色版
     - 下载：[压缩包](https://zhongshijie.coding.net/s/93fe3853-d803-4757-97b0-c94fb4c4f55d)
 - **Notepad++ 7.8.3**
+    - 文本编辑器
     - 绿色版
     - 下载：[压缩包](https://zhongshijie.coding.net/s/cefa177f-2411-43e6-be87-bd93118a7cc1)
 -**PicGo 2.2.2**
+    - 图床工具
     - 安装版
     - 下载：[应用程序](https://zhongshijie.coding.net/s/65ac7eda-783f-4499-b075-0cc4aedee23f)
+**Scrcpy+GUI**
+    - Windows + Android 多屏协同
+    - 绿色版 + 安装版
+    - 下载：[压缩包](https://zhongshijie.coding.net/s/809df795-c6aa-4ada-9552-d5fb6d28a5f6)
+    - 文档：[scrcpy-gui~github](https://github.com/Tomotoes/scrcpy-gui)
 
 # 商业软件
 **Adobe系列软件**

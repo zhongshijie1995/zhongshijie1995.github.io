@@ -19,12 +19,6 @@ date: 2020-03-16 22:17:49
             "url": "https://a.mp3",
             "pic": "https://caffeine.jpeg",
             "lrc": "caffeine.txt"
-        },
-        {
-            "title": "アイロニ",
-            "author": "鹿乃",
-            "url": "https://a.mp3",
-            "pic": "https://caffeine.jpeg"
         }
     ]
 }
