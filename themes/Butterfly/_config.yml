@@ -230,10 +230,10 @@ valine:
 # ------------------------------------
 since: 2020
 
-footer_custom_text:
+footer_custom_text: 欲为大树，毋与草争
 
 footer_copyright:
-  enable: true
+  enable: false
 
 ICP:
   enable: false
@@ -465,7 +465,7 @@ busuanzi:
 # 也可以寫成 年/月/日 時間
 runtimeshow:
   enable: true
-  start_date: 6/7/2018 00:00:00
+  start_date: 3/1/2020 00:00:00
 
 ####   右下角按鈕  ####
 #----------------------------------------------

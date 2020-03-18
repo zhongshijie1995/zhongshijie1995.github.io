@@ -100,7 +100,7 @@ theme: Butterfly
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://gitee.com/zhongshijie/zhongshijie.git
+  repo: git@gitee.com:zhongshijie/zhongshijie.git
   branch: public
 
 douban:
