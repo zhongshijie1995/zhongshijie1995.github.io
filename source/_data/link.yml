@@ -1,11 +1,12 @@
 class1:
   class_name: 优质网站
-  linK_list:
-  1:
-    name: 鸠摩搜索
-    link: https://www.jiumodiary.com/
-    avatar: https://www5.jiumodiary.com/images/front/eleps.png
-    descr: 电子文档搜索神器
+  link_list:
+    1:
+      name: 鸠摩搜索
+      link: https://www.jiumodiary.com/
+      avatar: https://www5.jiumodiary.com/images/front/eleps.png
+      descr: 电子文档搜索神器
+class2:
   class_name: 便携手册
   link_list:
     1:
@@ -18,7 +19,7 @@ class1:
       link: https://cyc2018.github.io/CS-Notes/#/README
       avatar: https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/other/LogoMakr_0zpEzN.png
       descr: 深入浅出计算机
-class2:
+class3:
   class_name: 工具箱
   link_list:
     1:
