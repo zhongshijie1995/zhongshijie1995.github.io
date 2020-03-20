@@ -25,7 +25,7 @@ date: 2020-03-16 22:17:49
     - 图床工具
     - 安装版
     - 下载：[应用程序](https://zhongshijie.coding.net/s/65ac7eda-783f-4499-b075-0cc4aedee23f)
-**Scrcpy+GUI**
+- **Scrcpy+GUI**
     - Windows + Android 多屏协同
     - 绿色版 + 安装版
     - 下载：[压缩包](https://zhongshijie.coding.net/s/809df795-c6aa-4ada-9552-d5fb6d28a5f6)

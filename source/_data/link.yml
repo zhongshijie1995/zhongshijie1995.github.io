@@ -1,4 +1,11 @@
 class1:
+  class_name: 优质网站
+  linK_list:
+  1:
+    name: 鸠摩搜索
+    link: https://www.jiumodiary.com/
+    avatar: https://www5.jiumodiary.com/images/front/eleps.png
+    descr: 电子文档搜索神器
   class_name: 便携手册
   link_list:
     1:
