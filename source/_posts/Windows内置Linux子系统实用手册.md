@@ -94,3 +94,13 @@ index-url = https://mirrors.aliyun.com/pypi/simple
 该 index-url 为 **阿里云源**。
 
 此后，使用pip时将从阿里云镜像进行下载。
+
+# 4. Node.js相关
+## 4.1 安装指定版本的Node.js
+```
+wget https://nodejs.org/dist/v12.16.2/node-v12.16.2-linux-x64.tar.xz
+tar -xvf node-v12.16.2-linux-x64.tar.xz
+mv node-v12.16.2-linux-x64 /usr/local/
+ln -s /usr/local/node-v12.16.2-linux-x64/bin/node /usr/local/bin/node
+ln -s /usr/local/node-v12.16.2-linux-x64/bin/npm /usr/local/bin/npm
+```
