@@ -104,3 +104,8 @@ mv node-v12.16.2-linux-x64 /usr/local/
 ln -s /usr/local/node-v12.16.2-linux-x64/bin/node /usr/local/bin/node
 ln -s /usr/local/node-v12.16.2-linux-x64/bin/npm /usr/local/bin/npm
 ```
+
+## 4.2 为npm切换源
+```
+npm config set registry https://registry.npm.taobao.org
+```
