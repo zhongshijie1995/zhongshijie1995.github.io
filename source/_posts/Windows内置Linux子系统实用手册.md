@@ -65,7 +65,21 @@ echo "export DISPLAY=:0.0" >> ~/.bashrc
 ```
 此后，在bash中启动图形界面程序，即可在Window10桌面以窗口形式展现。
 
-## 2.3 为pip更换源
+
+# 3. Python相关
+## 3.1 调整python和pip
+1. 首先安装pip3
+```
+sudo apt install python3-pip
+```
+
+2. 将python和pip指定为python3和pip3
+```
+ln -s /usr/bin/python3.6 /usr/bin/python
+ln -s /usr/bin/pip3 /usr/bin/pip
+```
+
+## 3.2 为pip更换源
 1. 创建 .pip 文件夹，并在该文件夹内创建 pip.conf 文本文件
 ```
 mkdir ~/.pip
