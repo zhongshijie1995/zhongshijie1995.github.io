@@ -9,7 +9,7 @@ description: 欲为大树，毋与草争
 keywords:
 author: 钟世杰
 language: zh-CN
-timezone: ''
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
