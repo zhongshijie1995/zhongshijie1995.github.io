@@ -1,25 +1,26 @@
 ---
-title: Windows内置Linux子系统实用手册
+title: Windows10内置Linux子系统实用手册
 tags:
   - Linux
   - Windows
 categories:
   - 经验与技巧
-cover: https://cdn.pixabay.com/photo/2013/07/13/12/31/penguin-159784_1280.png
+cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
 description: 有没有想过自己的Windows中能原生般的运行Linux？
 abbrlink: 41556
 date: 2020-03-16 22:01:00
 ---
 
-# 1. 如何开始？
+# 1. 安装操作系统
 ## 1.1 方法一：使用Win10自带的安装方法（Microsoft Store）和路径（C:）
-|步骤 |过程 |
-|-|-|
-|1.首先，我们通过`Win + S`快捷键进入搜索，搜索 开启或关闭Windows功能 并进入。开启了该功能后，重启系统。 |![开启功能](https://zhongshijie.gitee.io/mirrors-pic/img/20200317175850.jpg) |
-|
-2. 随后，我们需要进入Microsoft Store中下载Linux的一个发行版，搜索Linux即可查看各个Linux的发行版。|![应用商店](https://zhongshijie.gitee.io/mirrors-pic/img/20200317180238.jpg)
-|3. 选择一个喜欢的版本，并下载安装他们，随后启动该应用即可（作者以Ubuntu为例）。|![启动后](https://zhongshijie.gitee.io/mirrors-pic/img/20200317180327.jpg) |
-|4. 该Linux子系统可以直接访问windows中的文件 |例：本地磁盘c（`/mnt/c/`），本地磁盘d（`/mnt/d/`）|
+1. 首先，我们通过`Win + S`快捷键进入搜索，搜索 开启或关闭Windows功能 并进入。开启了该功能后，重启系统。
+![开启功能](https://zhongshijie.gitee.io/mirrors-pic/img/20200317175850.jpg) 
+
+2. 随后，我们需要进入Microsoft Store中下载Linux的一个发行版，搜索Linux即可查看各个Linux的发行版。
+![应用商店](https://zhongshijie.gitee.io/mirrors-pic/img/20200317180238.jpg)
+
+3. 选择一个喜欢的版本，并下载安装他们，随后启动该应用即可（作者以Ubuntu为例），该Linux子系统可以直接访问windows中的文件。
+  - 例：本地磁盘c（`/mnt/c/`），本地磁盘d（`/mnt/d/`）
 
 ## 1.2 方法二：使用离线安装方法
 1. 下载离线安装工具+LinuxOnWindows镜像
@@ -59,6 +60,7 @@ vi sources.list
 
 3. 将以下内容粘贴到编辑器中（Vi编辑器命令：“i”进入编辑，“Esc”结束编辑，“:wq”写入并退出）。
 ```vi
+# 适用于Ubuntu20.04的镜像源
 deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
