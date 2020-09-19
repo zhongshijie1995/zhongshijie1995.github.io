@@ -25,6 +25,7 @@ def login_gitee(_us: str, _pwd: str):
 
 
 def deploy_zhongshijie():
+    print('--------------发布zhongshijie------------------')
     dr.get('https://gitee.com/zhongshijie/zhongshijie/pages')
     dr.implicitly_wait(10)
     deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
@@ -34,6 +35,7 @@ def deploy_zhongshijie():
 
 
 def deploy_mirrors_pic():
+    print('--------------发布mirrors-pic------------------')
     dr.get('https://gitee.com/zhongshijie/mirrors-pic/pages')
     dr.implicitly_wait(10)
     deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
