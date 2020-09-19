@@ -33,7 +33,7 @@ def login_gitee(_us: str, _pwd: str):
 
 def deploy_all():
     for gitee_page_name, gitee_page_url in gitee_page_urls.items():
-        print('----------',  '更新部署'， gitee_page_name, '----------')
+        print('----------',  '更新部署', gitee_page_name, '----------')
         dr.get(gitee_page_url)
         dr.implicitly_wait(10)
         deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
