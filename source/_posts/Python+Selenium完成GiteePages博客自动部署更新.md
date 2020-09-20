@@ -85,7 +85,7 @@ a.send_keys('zhongshijie')
    
    上述代码在当前网页中，通过XPath查找到一个元素，进行了一次点击，并传入了值，同样是那么简单。
    
-   如果你备好[Selenium文档](https://python-selenium-zh.readthedocs.io/zh_CN/latest/)并随时查看，你会发现它能够如此优雅简单的指定你能想到的一切对浏览器的操作，运行代码，它将自动按照你的指示操作浏览器。
+如果你备好[Selenium文档](https://python-selenium-zh.readthedocs.io/zh_CN/latest/)并随时查看，你会发现它能够如此优雅简单的指定你能想到的一切对浏览器的操作，运行代码，它将自动按照你的指示操作浏览器。
 
 # 3. 示例代码
 
