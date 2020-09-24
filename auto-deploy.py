@@ -20,14 +20,14 @@ gitee_page_urls = {
 def login_gitee(_us: str, _pwd: str):
     print('----------', '开始登录gitee', '----------')
     dr.get('https://gitee.com/login')
-    dr.implicitly_wait(10)
+    dr.implicitly_wait(50)
     user_name_field = dr.find_element_by_xpath('//*[@id="user_login"]')
     user_pwd_field = dr.find_element_by_xpath('//*[@id="user_password"]')
     user_login_btn = dr.find_element_by_xpath('//*[@id="new_user"]/div[2]/div/div/div[4]/input')
     user_name_field.send_keys(_us)
     user_pwd_field.send_keys(_pwd)
     user_login_btn.click()
-    dr.implicitly_wait(10)
+    dr.implicitly_wait(50)
     dr.find_element_by_xpath('//*[@id="rc-users__container"]/div[1]/div[2]/div/div[1]/div[1]/div[1]/div[1]/strong/a')
 
 
@@ -35,7 +35,7 @@ def deploy_all():
     for gitee_page_name, gitee_page_url in gitee_page_urls.items():
         print('----------',  '更新部署', gitee_page_name, '----------')
         dr.get(gitee_page_url)
-        dr.implicitly_wait(10)
+        dr.implicitly_wait(50)
         deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
         deploy_update.click()
         Alert(dr).accept()
