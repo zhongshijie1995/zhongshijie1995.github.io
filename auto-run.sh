@@ -1,3 +1,5 @@
+echo '*****替换文章中的本地图片为个人图床图片******'
+sed -i "" 's|/Users/zsj/Desktop/01-Project/mirrors-pic/img/|https://zhongshijie.gitee.io/mirrors-pic/img/|' source/_posts/*
 echo '*****开始自动提交******'
 git add .
 git commit -m 'Auto+1'

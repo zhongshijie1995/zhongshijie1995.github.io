@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.alert import Alert
 
 # Driver path config
-driver_path = '/usr/local/bin/MicrosoftWebDriver'
+driver_path = './msedgedriver'
 
 # Gitee user
 user_name = '15521002256'
