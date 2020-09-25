@@ -2,6 +2,11 @@ class1:
   class_name: 优质网站
   link_list:
     1:
+      name: 清华开源镜像
+      link: https://mirrors.tuna.tsinghua.edu.cn/
+      avatar: https://mirrors.tuna.tsinghua.edu.cn/static/img/logo-small.png
+      descr: 快到嗨爽的开源软件下载
+    2:
       name: 鸠摩搜索
       link: https://www.jiumodiary.com/
       avatar: https://www5.jiumodiary.com/images/front/eleps.png
