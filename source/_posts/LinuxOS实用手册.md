@@ -1,17 +1,16 @@
 ---
-title: Windows10内置Linux子系统实用手册
+title: LinuxOS使用手册
 tags:
-  - Linux
-  - Windows
+  - MacOS
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
-description: 有没有想过自己的Windows中能原生般的运行Linux？
+description: 有没有想过让自己的Linux用起来更爽快？
 abbrlink: 41556
 date: 2020-03-16 22:01:00
 ---
 
-# 1. 安装操作系统
+# 1. Windows内置Linus子系统
 ## 1.1 方法一：使用Win10自带的安装方法（Microsoft Store）和路径（C:）
 1. 首先，我们通过`Win + S`快捷键进入搜索，搜索 开启或关闭Windows功能 并进入。开启了该功能后，重启系统。
 ![开启功能](https://zhongshijie.gitee.io/mirrors-pic/img/20200317175850.jpg) 
@@ -48,9 +47,20 @@ date: 2020-03-16 22:01:00
 
 ⑦卸载WSL：LxRunOffline.exe ui -n <安装名称>
 
+## 1.3 使其能够运行图形界面程序
 
-# 2. 如何更好的使用它？ 
-## 2.1 替换软件源
+1. 下载安装[**Xming**](https://zhongshijie.coding.net/s/ae5900ca-9554-4110-aea6-0ec5c59725ff)，安装完直接打开Xming即可。
+
+2. 执行下列指令后，重启bash。
+
+```
+echo "export DISPLAY=:0.0" >> ~/.bashrc
+```
+
+此后，在bash中启动图形界面程序，即可在Window10桌面以窗口形式展现。
+
+# 2. 软件源相关
+
 1. Ubuntu系统默认的软件源在国内网速较慢且不稳定，我们可以考虑更换为国内的阿里云的软件源。
 
 2. 首先，我们先创建一个名为 sources.list 文本文件。
@@ -79,15 +89,6 @@ sudo mv sources.list /etc/apt/sources.list
 sudo apt update
 sudo apt upgrade
 ```
-
-## 2.2 运行图形界面程序
-1. 下载安装[**Xming**](https://zhongshijie.coding.net/s/ae5900ca-9554-4110-aea6-0ec5c59725ff)，安装完直接打开Xming即可。
-
-2. 执行下列指令后，重启bash。
-```
-echo "export DISPLAY=:0.0" >> ~/.bashrc
-```
-此后，在bash中启动图形界面程序，即可在Window10桌面以窗口形式展现。
 
 
 # 3. Python相关
