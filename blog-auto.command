@@ -1,3 +1,3 @@
-cd ~/Desktop/01-Project/zhongshijie && sh auto-run.sh
-cd ~/Desktop/01-Project/mirrors-pic && sh auto-run.sh
-cd ~/Desktop/01-Project/zhongshijie && python3 auto-deploy.py
+cd ~/Desktop/01-Projects/zhongshijie && sh auto-commit.sh
+cd ~/Desktop/01-Projects/mirrors-pic && sh auto-commit.sh
+cd ~/Desktop/01-Projects/zhongshijie && python3 auto-deploy.py

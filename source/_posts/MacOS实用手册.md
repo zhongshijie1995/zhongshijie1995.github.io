@@ -5,7 +5,7 @@ tags:
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/keyboard-690066_960_720.jpg
-description: 有没有想过自己的Windows中能原生般的运行Linux？
+description: 有没有想过让自己的MacOS用起来更爽快？
 abbrlink: 41556
 date: 2020-03-16 22:01:00
 ---
@@ -37,11 +37,11 @@ vim ~/.pip/pip.conf
 2. 将以下内容粘贴到编辑器中（Vi编辑器命令：“i”进入编辑，“Esc”结束编辑，“:wq”写入并退出）。
 ```
 [global]
-index-url = https://mirrors.aliyun.com/pypi/simple
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
 ```
-该 index-url 为 **阿里云源**。
+该 index-url 为 **清华镜像源**。
 
-此后，使用pip时将从阿里云镜像进行下载。
+此后，使用pip时将从清华镜像进行下载。
 
 # 4. Node.js相关
 1. 运行以下命令为npm切换源

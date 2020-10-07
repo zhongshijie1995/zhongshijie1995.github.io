@@ -5,7 +5,7 @@ tags:
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
-description: 有没有想过让自己的Linux用起来更爽快？
+description: 有没有想过在Windows10中居然还能爽快原生的使用Linux？
 abbrlink: 41556
 date: 2020-03-16 22:01:00
 ---
