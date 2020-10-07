@@ -1,7 +1,7 @@
 ---
 title: LinuxOS使用手册
 tags:
-  - MacOS
+  - Linux
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
