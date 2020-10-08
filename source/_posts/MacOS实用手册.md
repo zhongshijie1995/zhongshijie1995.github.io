@@ -4,7 +4,7 @@ tags:
   - MacOS
 categories:
   - 经验与技巧
-cover: https://zhongshijie.gitee.io/mirrors-pic/img/keyboard-690066_960_720.jpg
+cover: https://zhongshijie.gitee.io/mirrors-pic/img/20201008081800.jpg
 description: 有没有想过让自己的MacOS用起来更爽快？
 abbrlink: 41556
 date: 2020-03-16 22:01:00
