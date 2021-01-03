@@ -3,6 +3,6 @@ cd ../mirrors-pic
 ./auto-commit.ps1
 cd ../zhongshijie
 echo " ----------- 提交 zhongshijie ----------- "
-python replace-pic.py
+python auto-replace.py
 ./auto-commit.ps1
 python auto-deploy.py

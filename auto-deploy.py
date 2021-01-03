@@ -40,7 +40,7 @@ def deploy_all():
         deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
         deploy_update.click()
         Alert(dr).accept()
-        time.sleep(10)
+        time.sleep(5)
 
 
 if __name__ == '__main__':
