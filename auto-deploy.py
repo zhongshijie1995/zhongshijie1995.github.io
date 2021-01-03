@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.alert import Alert
 
 # Driver path config
-driver_path = './msedgedriver'
+driver_path = './msedgedriver.exe'
 
 # Gitee user
 user_name = '15521002256'
@@ -36,10 +36,11 @@ def deploy_all():
         print('----------',  '更新部署', gitee_page_name, '----------')
         dr.get(gitee_page_url)
         dr.implicitly_wait(50)
+        dr.execute_script("window.scrollTo(0,document.body.scrollHeight);")
         deploy_update = dr.find_element_by_xpath('//*[@id="pages-branch"]/div[7]')
         deploy_update.click()
         Alert(dr).accept()
-        time.sleep(3)
+        time.sleep(10)
 
 
 if __name__ == '__main__':
@@ -54,7 +55,7 @@ if __name__ == '__main__':
         login_gitee(user_name, user_pwd)
         deploy_all()
     except Exception as e:
-        print('Login Failed', e)
+        print('Deploy Failed', e)
 
     # Quit browser
     dr.quit()
