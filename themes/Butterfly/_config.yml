@@ -389,7 +389,7 @@ avatar_effect: false
 # 網站顯示模式
 # light 默認模式
 # dark 黑暗模式（不建議）
-display_mode: dark
+display_mode: light
 
 # 美化post頁顯示
 post_beautify:
