@@ -5,7 +5,7 @@ tags:
   - Linux
   - Winodws
 categories:
-  - 经验与技巧
+  - 大指南
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
 description: 厌倦了双系统和虚拟机中的Linux？如果你是一个Windows10用户，直接配置一个Linux子系统不是更爽吗？一起探索一下如何让WSL更畅快好用吧~
 abbrlink: 10000

@@ -1,10 +1,10 @@
 ---
-title: 【小问题】SpringBoot@Autowired失效
+title: 【小问题】SpringBoot @Autowired 失效
 tags:
   - Java
   - SpringBoot
 categories:
-  - 经验与技巧
+  - 小问题
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200921095000.png
 description: SpringBoot@Autowired的失效可能来自好几种细节错误场景。
 abbrlink: 50001

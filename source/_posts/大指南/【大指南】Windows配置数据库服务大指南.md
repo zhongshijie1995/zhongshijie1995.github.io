@@ -6,7 +6,7 @@ tags:
   - MySQL
   - VMware
 categories:
-  - 经验与技巧
+  - 大指南
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210213124100.jpg
 description: 一步一步在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验
 abbrlink: 50000

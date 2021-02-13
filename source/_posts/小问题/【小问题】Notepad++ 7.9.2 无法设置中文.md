@@ -4,7 +4,7 @@ tags:
   - Windows
   - Notepad++
 categories:
-  - 经验与技巧
+  - 小问题
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210213132154.png
 description: 看到 Notepad++ 7.9.2 的发版名称，除了感受到作者的恶意，还发现他故意留了一个bug，让用户无法直接设置简体中文作为语言环境，我们当然不能惯着他了
 abbrlink: 50002
