@@ -1,5 +1,5 @@
 ---
-title: WSL实用手册
+title: Windows子系统Linux配置大指南
 tags:
   - WSL
   - Linux
@@ -7,7 +7,7 @@ tags:
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
-description: 在Windows10中玩转Linux的骚操作
+description: 厌倦了双系统和虚拟机中的Linux？如果你是一个Windows10用户，直接配置一个Linux子系统不是更爽吗？一起探索一下如何让WSL更畅快好用吧~
 abbrlink: 10000
 date: 2020-03-16 22:01:00
 ---
