@@ -3,7 +3,7 @@ title: 【大指南】玩转Windows10-Linux子系统
 tags:
   - WSL
   - Linux
-  - Winodows
+  - Windows
 categories:
   - 大指南
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
