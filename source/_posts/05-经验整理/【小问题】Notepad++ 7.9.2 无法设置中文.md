@@ -1,5 +1,5 @@
 ---
-title: 小问题-Notepad++ 7.9.2 无法设置中文？
+title: 【小问题】Notepad++ 7.9.2 无法设置中文？
 tags:
   - Windows
   - Notepad++

@@ -1,5 +1,5 @@
 ---
-title: Python+Selenium完成网页操作自动化
+title: 【小教程】Python+Selenium网页操作自动化
 tags:
   - Python
   - Selenium
