@@ -1,12 +1,12 @@
 ---
-title: SpringBoot注解@Autowired失效问题整理
+title: SpringBoot@Autowired失效问题错误场景
 tags:
   - Java
   - SpringBoot
 categories:
   - 经验与技巧
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200921095000.png
-description: SpringBoot注解@Autowired的失效可能来自好几种细节错误场景。
+description: SpringBoot@Autowired的失效可能来自好几种细节错误场景。
 abbrlink: 50001
 date: 2020-09-19 22:13:00
 
