@@ -1,5 +1,5 @@
 ---
-title: Windows配置数据库服务器实验环境大指南
+title: Windows配置数据库服务大指南
 tags:
   - Windows
   - Oracle
