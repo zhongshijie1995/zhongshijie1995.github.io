@@ -1,9 +1,10 @@
 ---
-title: 【大指南】Windows配置数据库服务
+title: 【大指南】Windows配置多种数据库环境
 tags:
   - Windows
   - Oracle
   - MySQL
+  - MongoDB
   - VMware
 categories:
   - 大指南
@@ -75,4 +76,22 @@ flush privileges ;
 2. 删除MySQL用户和表空间（以用户名zsj,表空间名zsj为例）
 ```SQL
 drop user zsj cascade;
+```
+
+# MongoDB
+## 安装MongoDB数据库
+1. 下载MongoDB数据库[安装程序](https://www.mongodb.com/try/download/community)
+2. 通过msi进行安装，使用`Complete`模式（直接安装到系统盘）或`Custom`模式（手动指定安装位置）
+3. 编辑安装目录下的`XXX\bin\mongod.conf`中的`bindIp`为`0.0.0.0`，使其可以被任何IP连接访问
+
+## 管理MongoDB数据库
+0. 打开任意数据库连接工具，无须用户名和密码
+1. 创建or切换到数据库
+```sql
+use zsj
+```
+2. 删除数据库
+```sql
+use zsj
+db.dropDatabase()
 ```
