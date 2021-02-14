@@ -78,6 +78,9 @@ sh Anaconda3-2020.11-Linux-x86_64.sh
 1. 重新安装`openssh-server`
 ```shell
 sudo apt remove openssh-server
+```
+
+```shell
 sudo apt install openssh-server
 ```
 
