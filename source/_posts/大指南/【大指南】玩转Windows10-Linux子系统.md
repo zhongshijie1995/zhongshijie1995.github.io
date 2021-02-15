@@ -79,7 +79,6 @@ sh Anaconda3-2020.11-Linux-x86_64.sh
 ```shell
 sudo apt remove openssh-server
 ```
-
 ```shell
 sudo apt install openssh-server
 ```
