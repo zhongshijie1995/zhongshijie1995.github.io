@@ -19,7 +19,7 @@ date: 2020-03-16 22:01:00
 
 ![VMware中运行一个属于自己的多功能数据库服务器](https://zhongshijie.gitee.io/mirrors-pic/img/20210214224333.png)
 
-话不多说，这里直接提供一个已经安装好了 Oracle19c + MySQL8 + MongoDB4.4 的数据库服务Windows10环境，使用VMware Player 16直接打开即可使用，免去安装和配置的烦恼，点击[此处下载]()
+话不多说，这里直接提供一个已经安装好了 Oracle19c + MySQL8 + MongoDB4.4 的数据库服务Windows10环境，使用VMware Player 16直接打开即可使用，免去安装和配置的烦恼，点击[此处下载](https://cloud.189.cn/t/iEFjuqJ3Eraq)
 
 # Oracle
 ## 安装Oracle数据库
