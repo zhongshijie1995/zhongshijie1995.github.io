@@ -93,3 +93,8 @@ PasswordAuthentication yes
 ```shell
 sudo service ssh restart
 ```
+
+4. 开启自启动远程服务
+```shell
+sudo systemctl enable ssh
+```
