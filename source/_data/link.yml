@@ -24,6 +24,11 @@ class2:
       link: https://cyc2018.github.io/CS-Notes/#/README
       avatar: https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/other/LogoMakr_0zpEzN.png
       descr: 深入浅出计算机
+    3:
+      name: Java成神之路
+      link: http://hollischuang.gitee.io/tobetopjavaer/#/
+      avatar: http://hollischuang.gitee.io/tobetopjavaer/icon/icon.JPG
+      descr: 一书看完Java知识结构体系
 class3:
   class_name: 工具箱
   link_list:
