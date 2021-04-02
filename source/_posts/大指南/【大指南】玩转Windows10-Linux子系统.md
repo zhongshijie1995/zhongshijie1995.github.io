@@ -32,18 +32,21 @@ deb http://security.ubuntu.com/ubuntu/ focal-security universe
 deb http://security.ubuntu.com/ubuntu/ focal-security multiverse
 ```
 ### 清华软件源
+更新来源：[https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/](https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/)
 ```conf
-# 适用于Ubuntu20.04的清华镜像源
-deb http://mirrors.aliyun.com/ubuntu/ bionic main restricteduniverse multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-security mainrestricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-updates mainrestricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed mainrestricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ bionic-backports mainrestricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricteduniverse multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security mainrestricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates mainrestricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed mainrestricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports mainrestricted universe multiverse
+# 默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse
+
+# 预发布软件源，不建议启用
+# deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
+# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse
 ```
 ## 启用和更新软件源
 ```shell
