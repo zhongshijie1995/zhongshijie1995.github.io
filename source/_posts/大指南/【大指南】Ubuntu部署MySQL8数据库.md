@@ -1,5 +1,5 @@
 ---
-title: 【大指南】Ubuntu部署MySQL8数据库
+title: 【大指南】Ubuntu部署MySQL8数据库操作指北
 date: 2021-04-04 12:35:05
 tags:
   - Ubuntu
