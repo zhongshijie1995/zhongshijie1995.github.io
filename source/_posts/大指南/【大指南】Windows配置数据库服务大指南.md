@@ -1,5 +1,6 @@
 ---
 title: 【大指南】Windows配置多种数据库环境
+date: 2020-03-16 22:01:00
 tags:
   - Windows
   - Oracle
@@ -10,8 +11,7 @@ categories:
   - 大指南
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210213124100.jpg
 description: 一步一步在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验
-abbrlink: 50000
-date: 2020-03-16 22:01:00
+abbrlink: 10003
 ---
 
 也许，你也曾经遇到过这样的问题：企业数据库服务器资源有限且自己不具备DBA权限，你想要在自己的PC中搭建出各种数据库环境以进行对比实验，例如：进行Oracle数据库迁移到MySQL中的对比实验等等……于是，我们企图运行一个专用的数据库服务器，让你享受一次自己做DBA的感觉，让你的实验更加方便和快捷。
