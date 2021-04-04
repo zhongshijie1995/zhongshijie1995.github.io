@@ -6,10 +6,11 @@ tags:
   - MySQL
 categories:
   - 大指南
-cover:
+cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210404143948.png
 abbrlink: 10002
 description:
 ---
+
 1. 卸载MySQL及其依赖项
 ```shell
 sudo apt remove mysql-common
