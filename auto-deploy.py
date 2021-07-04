@@ -48,6 +48,7 @@ if __name__ == '__main__':
     service = Service(driver_path)
     service.start()
     dr = webdriver.Remote(service.service_url)
+    dr.maximize_window()
 
     # Deploy
     try:
