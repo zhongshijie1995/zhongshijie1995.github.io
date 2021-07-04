@@ -1,10 +1,10 @@
 import time
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.safari.webdriver import Service
 from selenium.webdriver.common.alert import Alert
 
 # Driver path config
-driver_path = './msedgedriver.exe'
+driver_path = '/usr/bin/safaridriver'
 
 # Gitee user
 user_name = '15521002256'
@@ -27,13 +27,13 @@ def login_gitee(_us: str, _pwd: str):
     user_name_field.send_keys(_us)
     user_pwd_field.send_keys(_pwd)
     user_login_btn.click()
-    dr.implicitly_wait(50)
+    time.sleep(10)
     dr.find_element_by_xpath('//*[@id="rc-users__container"]/div[1]/div[2]/div/div[1]/div[1]/div[1]/div[1]/strong/a')
 
 
 def deploy_all():
     for gitee_page_name, gitee_page_url in gitee_page_urls.items():
-        print('----------',  '更新部署', gitee_page_name, '----------')
+        print('----------', '更新部署', gitee_page_name, '----------')
         dr.get(gitee_page_url)
         dr.implicitly_wait(50)
         dr.execute_script("window.scrollTo(0,document.body.scrollHeight);")
@@ -44,11 +44,11 @@ def deploy_all():
 
 
 if __name__ == '__main__':
-    
     # Get browser by driver path
     service = Service(driver_path)
     service.start()
     dr = webdriver.Remote(service.service_url)
+    dr.maximize_window()
 
     # Deploy
     try:

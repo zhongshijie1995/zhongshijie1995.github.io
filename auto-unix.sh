@@ -1,16 +1,19 @@
 echo " ----------- mirrors-pic Auto.sh ----------- "
 cd ../mirrors-pic
-./auto-commit.ps1
+./auto-commit.sh
 cd ../zhongshijie
 echo " ----------- zhongshijie Auto.sh ----------- "
-python auto-replace.py
+echo '*****zhongshijie Auto Replace Pictures******'
+python3 auto-replace.py
 echo '*****zhongshijie Auto Commit******'
 git add .
-git commit -m 'Auto+1'
+git commit -m 'AutoCommit'
 git push
-echo '*****zhongshijie Auto Deploy******'
+echo '*****zhongshijie Auto Deploy Push******'
 npx hexo clean
 npx hexo g
 npx hexo deploy
 echo '*****zhongshijie Auto Deploy Clean******'
 npx hexo clean
+echo '*****zhongshijie Auto Deploy Refresh******'
+python auto-deploy.py
