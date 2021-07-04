@@ -28,12 +28,12 @@ favicon: /add_source/round-avatar.png
 # ---------------
 pwa:
   enable: true
-  manifest: /img/pwa/manifest.json
-  theme_color: "#fff"
+  # manifest: /img/pwa/manifest.json
+  # theme_color: "#fff"
   apple_touch_icon: /add_source/round-avatar.png
-  favicon_32_32: /add_source/round-avatar.png
-  favicon_16_16: //add_source/round-avatar.png
-  mask_icon: /add_source/round-avatar.png
+  # favicon_32_32: /add_source/round-avatar.png
+  # favicon_16_16: //add_source/round-avatar.png
+  # mask_icon: /add_source/round-avatar.png
 
 # Highlight theme
 # ---------------
