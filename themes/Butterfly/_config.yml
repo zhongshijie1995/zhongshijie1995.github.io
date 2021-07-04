@@ -26,14 +26,14 @@ favicon: /add_source/round-avatar.png
 # PWA
 # See https://github.com/JLHwung/hexo-offline
 # ---------------
-pwa:
-  # enable: true
-  # manifest: /img/pwa/manifest.json
-  # theme_color: "#fff"
-  # apple_touch_icon: /add_source/round-avatar.png
-  # favicon_32_32: /add_source/round-avatar.png
-  # favicon_16_16: //add_source/round-avatar.png
-  # mask_icon: /add_source/round-avatar.png
+# pwa:
+#   enable: true
+#   manifest: /img/pwa/manifest.json
+#   theme_color: "#fff"
+#   apple_touch_icon: /img/pwa/apple-touch-icon.png
+#   favicon_32_32: /img/pwa/32.png
+#   favicon_16_16: /img/pwa/16.png
+#   mask_icon: /img/pwa/safari-pinned-tab.svg
 
 # Highlight theme
 # ---------------
