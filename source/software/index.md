@@ -14,9 +14,10 @@ date: 2020-03-16 22:17:49
 | XMind Zen | 2020 | 商业软件+破解补丁 | [压缩包](https://cloud.189.cn/t/qI7JzmeuiiEj) |安装+替换补丁 |
 | PhotoShop | 2020 | 商业软件破解版 | [压缩包](https://cloud.189.cn/t/viANJjUjmuQ3) | 解压缩+安装 |
 | PremierePro | 2020 | 商业软件破解版 | [压缩包](https://cloud.189.cn/t/Nj2ARnau22u2) | 解压缩+安装 |
-| Windows10神州网信版优化 | 0.1.2 | 开源 | [运行程序](https://cloud.189.cn/t/auIziazQjEfe) | https://gitee.com/hjim/cmgos.git |
+| Windows10神州网信版优化 | 0.1.2 | 开源 | [运行程序](https://cloud.189.cn/t/auIziazQjEfe) | gitee.cmgos.git |
 
 # Mac OS
 |  名称  | 版本 | 类型  | 下载链接 | 备注 |
 |  ----  | ---- | ----  | ---- | ---- |
-| CrossOver | 20.0.4 | 商业软件破解版 | [安装包](https://cloud.189.cn/t/NfYfIbjm6Rju) | 安装即可用
+| CrossOver | 20.0.4 | 商业软件破解版 | [安装包](https://cloud.189.cn/t/NfYfIbjm6Rju) | 安装即可用 |
+| ParallelsDesktop | 16.5.0 | 商业软件破解版 | [安装包]https://cloud.189.cn/t/7RV7nm2maaya | 使用跳转器跳转 |
