@@ -8,7 +8,7 @@ categories:
   - 大指南
 cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210404143948.png
 abbrlink: 10002
-description:
+description: 其实总共就那么几步，不用去网上看半天。
 ---
 
 1. 卸载MySQL及其依赖项

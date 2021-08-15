@@ -4,7 +4,7 @@ tags:
   - SQL
 categories:
   - 大指南
-cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200829192900.png
+cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210815212601.png
 description: 随着时间的积累，业务数据量的增多，SQL的执行效率对程序的运行效率的影响逐渐增大，检查SQL的优化很有必要的。
 abbrlink: 10004
 date: 2021-03-16 22:01:00
@@ -29,7 +29,7 @@ select id from t where num=10 or num=20
 可以这样查询：    
 ```sql
 select id from t where num=10    
-union all    
+union all 
 select id from t where num=20
 ```
     
@@ -79,11 +79,11 @@ create table #t(...)
 ```
     
 12. 很多时候用 exists 代替 in 是一个好的选择：
-```sql    
+```sql
 select num from a where num in(select num from b)
 ```
 用下面的语句替换：
-```sql   
+```sql
 select num from a where exists(select 1 from b where num=a.num)
 ```
     
