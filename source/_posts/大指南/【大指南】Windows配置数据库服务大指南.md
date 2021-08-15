@@ -33,16 +33,15 @@ abbrlink: 10003
 0. 打开`SQLPlus`或其他数据连接工具，用户名为system，密码为安装时提供的口令
 1. 创建Oracle用户和表空间（以用户名zsj，密码zsjpwd，表空间名zsj为例）
 ```SQL
-create user zsj identified by zsjpwd;
-create tablespace zsj datafile 'C:\Users\zhong\Desktop\usr\zsj.dbf'
-size 32m autoextend on next 32m maxsize 2048m;
-alter user zsj default tablespace zsj;
-grant create session,create table,unlimited tablespace to zsj;
+create user c##zsj identified by zsjpwd;
+create tablespace zsj datafile 'C:\Users\zhongshijie\Oracle\zsj\zsj.dbf' size 32m autoextend on next 32m maxsize 10240m;
+alter user c##zsj default tablespace zsj;
+grant create session,create table,unlimited tablespace to c##zsj;
 ```
 
 2. 删除Oracle用户和表空间（以用户名zsj，表空间名zsj为例）
 ```SQL
-drop user zsj;
+drop user c##zsj;
 drop tablespace zsj including contents and datafiles CASCADE CONSTRAINTS;
 ```
 
