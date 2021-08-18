@@ -39,7 +39,7 @@ date: 2020-09-19 23:00:00
 
 下面，我将以我使用的新版MicroSoft Edge浏览器为例进行讲解：
 
-1. 通过网络渠道找到符合自己电脑中浏览器的 操作系统+品牌+版本 的浏览器驱动，例如我通过MicroSoft Edge官方的[开发者网站](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)查找并下载浏览器驱动。
+1. 通过网络渠道找到符合自己电脑中浏览器的 操作系统+品牌+版本 的浏览器驱动，例如我通过MicroSoft Edge官方的[开发者网站](https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/)查找并获取浏览器驱动。
 2. 将驱动放置在Python运行时能够查找到的位置，案例中我放在了`/usr/local/bin`目录下。
 
 ## 2.2 掌握Selenium的基本用法
