@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://zhongshijie.gitee.io/
+url: https://zhongshijie1995.github.io/
 root: /
 # permalink: :year/:month/:day/:title/
 permalink: posts/:abbrlink/
@@ -100,7 +100,7 @@ theme: Butterfly
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@gitee.com:zhongshijie/zhongshijie.git
+  repo: git@github.com:zhongshijie1995/zhongshijie1995.github.io.git
   branch: public
 
 douban:
