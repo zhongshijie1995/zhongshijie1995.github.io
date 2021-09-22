@@ -23,7 +23,7 @@ date: 2020-03-16 22:17:49
 - 指责、谩骂和侮辱
 - 中介性质的非真诚交友
 
-<img src="https://zhongshijie.gitee.io/mirrors-pic/img/20200317204021.png" width="50%" alt="经典瞬间">
+<img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20200317204021.png" width="50%" alt="经典瞬间">
 
 ***
 本站其实主要包含以下几个核心：[主页部署](https://gitee.com/zhongshijie/zhongshijie/pages)，[图床部署](https://gitee.com/zhongshijie/mirrors-pic/pages)，[文件网盘](https://zhongshijie.coding.net/p/mirrors-file/attachment)（贴于此处仅作备份），各位看客可以忽略。

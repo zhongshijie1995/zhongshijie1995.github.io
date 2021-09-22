@@ -6,7 +6,7 @@ tags:
   - 自动化
 categories:
   - 小教程
-cover: https://zhongshijie.gitee.io/mirrors-pic/img/20200919235000.jpg
+cover: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200919235000.jpg
 description: 用Python+Selenium让一切繁琐的网页操作自动化
 abbrlink: 20001
 date: 2020-09-19 23:00:00
@@ -19,13 +19,13 @@ date: 2020-09-19 23:00:00
 
 日常工作生活中，有很多令人厌烦的、必须要进行的网页操作，每次都需要我们输入一些信息，进行千篇一律的点按操作，毫无技术含量却还要我们专程进行，我们希望有一个定时任务帮自动我们完成，例如：网页打卡、签到领奖……
 
-![登录操作](https://zhongshijie.gitee.io/mirrors-pic/img/20200919204534.png)
+![登录操作](https://zhongshijie1995.github.io/zhongshijie-pic/img/20200919204534.png)
 
 ## 1.2 频繁无趣的解放
 
 在博客等部署在Gitee Pages中的同学们都知道，将静态资源推送到了Gitee仓库中后是不会自动刷新的，它需要我们手动进入到仓库的GiteePages中点击更新才能将博客的最新内容发布，由于每次更新博客，都需要进行这样的操作，频繁而无趣。
 
-![GiteePage服务的更新页面](https://zhongshijie.gitee.io/mirrors-pic/img/20200919204533.png)
+![GiteePage服务的更新页面](https://zhongshijie1995.github.io/zhongshijie-pic/img/20200919204533.png)
 
 ## 1.3 用Python来完成它！
 

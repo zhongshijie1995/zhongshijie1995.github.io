@@ -23,5 +23,5 @@ def alter(file,old_str,new_str):
 if __name__ == "__main__":
     func()
     for item in file_path:
-        alter(item,"D:/01-Project/Blog/mirrors-pic/img/","https://zhongshijie.gitee.io/mirrors-pic/img/")
-        alter(item,"/Users/zhongshijie/Desktop/01-Projects/Blog/mirrors-pic/img/", "https://zhongshijie.gitee.io/mirrors-pic/img/")
+        alter(item,"D:/01-Project/Blog/mirrors-pic/img/","https://zhongshijie1995.github.io/zhongshijie-pic/img/")
+        alter(item,"/Users/zhongshijie/Desktop/01-Projects/Blog/mirrors-pic/img/", "https://zhongshijie1995.github.io/zhongshijie-pic/img/")

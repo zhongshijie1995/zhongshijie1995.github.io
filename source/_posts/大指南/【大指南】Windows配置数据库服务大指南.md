@@ -9,7 +9,7 @@ tags:
   - VMware
 categories:
   - 大指南
-cover: https://zhongshijie.gitee.io/mirrors-pic/img/20210213124100.jpg
+cover: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213124100.jpg
 description: 一步一步在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验
 abbrlink: 10003
 ---
@@ -18,7 +18,7 @@ abbrlink: 10003
 
 我们其实希望达到**在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验**的效果，为此，解决方案就可以是：在我们的VMware中安装一个Windows10环境，让它作为一个全职数据库服务器（既不污染开发环境，又方便迁移到其他计算机中），对数据库的安装和配置操作均在这个虚拟环境中进行，当然，你也可以直接在你的物理机中执行这些操作，只是便不具备上述所说的优点罢了。
 
-![VMware中运行一个属于自己的多功能数据库服务器](https://zhongshijie.gitee.io/mirrors-pic/img/20210214224333.png)
+![VMware中运行一个属于自己的多功能数据库服务器](https://zhongshijie1995.github.io/zhongshijie-pic/img/20210214224333.png)
 
 话不多说，这里直接提供一个已经安装好了 Oracle19c + MySQL8 + MongoDB4.4 的数据库服务Windows10环境，使用VMware Player 16直接打开即可使用，免去安装和配置的烦恼，点击[此处下载](https://cloud.189.cn/t/eIFraefAZjIr)
 
