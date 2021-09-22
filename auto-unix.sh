@@ -15,4 +15,3 @@ npx hexo g
 npx hexo deploy
 echo '*****zhongshijie Auto Deploy Clean******'
 npx hexo clean
-
