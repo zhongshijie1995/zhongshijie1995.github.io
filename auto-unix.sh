@@ -15,5 +15,4 @@ npx hexo g
 npx hexo deploy
 echo '*****zhongshijie Auto Deploy Clean******'
 npx hexo clean
-echo '*****zhongshijie Auto Deploy Refresh******'
-python3 auto-deploy.py
+

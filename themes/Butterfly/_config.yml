@@ -151,7 +151,7 @@ wordcount:
 
 toc:
   enable: true
-  number: false
+  number: true
 
 # auto open the sidebar in 'post'
 auto_open_sidebar:
