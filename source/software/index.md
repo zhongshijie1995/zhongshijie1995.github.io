@@ -20,4 +20,4 @@ date: 2020-03-16 22:17:49
 |  名称  | 版本 | 类型  | 下载链接 | 备注 |
 |  ----  | ---- | ----  | ---- | ---- |
 | CrossOver | 20.0.4 | 商业软件破解版 | [安装包](https://cloud.189.cn/t/NfYfIbjm6Rju) | 安装即可用 |
-| ParallelsDesktop | 16.5.0 | 商业软件破解版 | [安装包](https://cloud.189.cn/t/7RV7nm2maaya) | 使用跳转器跳转 |
+| ParallelsDesktop启动器 | 16+ | 商业软件试用启动 | [安装包](https://cloud.189.cn/web/share?code=A7VV7jfYZvIj) | 在安装完虚拟机后安装PD启动器 |
