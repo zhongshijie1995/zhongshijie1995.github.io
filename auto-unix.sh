@@ -1,7 +1,7 @@
-echo " ----------- mirrors-pic Auto.sh ----------- "
-cd ../mirrors-pic
+echo " ----------- zhongshijie-pic Auto.sh ----------- "
+cd ../zhongshijie-pic
 ./auto-commit.sh
-cd ../zhongshijie
+cd ../zhongshijie1995.github.io
 echo " ----------- zhongshijie Auto.sh ----------- "
 echo '*****zhongshijie Auto Replace Pictures******'
 python3 auto-replace.py
