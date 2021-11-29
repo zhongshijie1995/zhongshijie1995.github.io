@@ -47,10 +47,15 @@ alter user 'root'@'%' identified with mysql_native_password by 'password';
 ```
 2. 创建用户和数据库
 ```sql
-create user 'user_a'@'%' identified by 'user_a_password';
-create schema user_a default character set utf8mb4 collate utf8mb4_general_ci;
-grant all on user_a.* to user_a;
+create user 'big_sql'@'%' identified by 'big_sql';
+create schema big_sql default character set utf8mb4 collate utf8mb4_general_ci;
+grant all on big_sql.* to big_sql;
 flush privileges;
+```
+3. 删除用户和数据库
+```sql
+drop user big_sql;
+drop schema big_sql;
 ```
 
 # 进程重启
