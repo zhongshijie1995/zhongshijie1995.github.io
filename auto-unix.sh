@@ -3,8 +3,8 @@ cd ../zhongshijie-pic
 ./auto-commit.sh
 cd ../zhongshijie1995.github.io
 echo " ----------- zhongshijie Auto.sh ----------- "
-echo '*****zhongshijie Auto Replace Pictures******'
-python3 auto-replace.py
+echo '*****zhongshijie Img Replace Pictures******'
+python3 img-replace.py
 echo '*****zhongshijie Auto Commit******'
 git add .
 git commit -m 'AutoCommit'
