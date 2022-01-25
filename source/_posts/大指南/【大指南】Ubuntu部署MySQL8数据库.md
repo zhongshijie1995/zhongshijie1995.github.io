@@ -6,7 +6,7 @@ tags:
   - MySQL
 categories:
   - 大指南
-cover: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210404143948.png
+index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210404143948.png
 abbrlink: 10002
 description: 其实总共就那么几步，不用去网上看半天。
 ---

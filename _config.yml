@@ -103,16 +103,16 @@ deploy:
   repo: git@github.com:zhongshijie1995/zhongshijie1995.github.io.git
   branch: public
 
-douban:
-  user: 178660721
-  builtin: true
-  book:
-    title: '我的书单'
-    quote: '人找书难，书找书容易~'
-  movie:
-    title: '我的电影单'
-    quote: '热爱喜剧的人往往自觉孤独~'
-  # game:
-  #   title: 'This is my game title'
-  #   quote: 'This is my game quote'
-  timeout: 10000
+# douban:
+#   user: 178660721
+#   builtin: true
+#   book:
+#     title: '我的书单'
+#     quote: '人找书难，书找书容易~'
+#   movie:
+#     title: '我的电影单'
+#     quote: '热爱喜剧的人往往自觉孤独~'
+#   game:
+#     title: 'This is my game title'
+#     quote: 'This is my game quote'
+#   timeout: 10000

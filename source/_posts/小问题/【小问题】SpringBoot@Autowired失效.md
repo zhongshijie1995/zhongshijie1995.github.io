@@ -5,7 +5,7 @@ tags:
   - SpringBoot
 categories:
   - 小问题
-cover: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200921095000.png
+index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200921095000.png
 description: SpringBoot @Autowired 的失效可能来自好几种细节错误场景。
 abbrlink: 30002
 date: 2020-09-19 22:13:00

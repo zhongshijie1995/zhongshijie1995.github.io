@@ -9,7 +9,7 @@ tags:
   - VMware
 categories:
   - 大指南
-cover: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213124100.jpg
+index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213124100.jpg
 description: 一步一步在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验
 abbrlink: 10003
 ---
