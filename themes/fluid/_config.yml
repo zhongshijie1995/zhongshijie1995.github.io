@@ -725,14 +725,14 @@ valine:
   appId: RsWKIq7id8U0Wg61EEUVEkUr-gzGzoHsz
   appKey: shK7uqBTgiPOoABdIUMFOQ74
   path: window.location.pathname
-  placeholder:
+  placeholder: 留言
   avatar: 'retro'
   meta: ['nick', 'mail']
-  requiredFields: []
+  requiredFields: ['nick', 'mail']
   pageSize: 10
   lang: 'zh-CN'
-  highlight: false
-  recordIP: false
+  highlight: true
+  recordIP: true
   serverURLs: ''
   emojiCDN:
   emojiMaps:
