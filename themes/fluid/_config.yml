@@ -922,22 +922,33 @@ links:
   # Member item of page
   items:
     - {
-      title: "清华开源镜像",
-      intro: "快到嗨爽的开源软件下载",
+      title: "清华镜像",
+      intro: "开源软件国内镜像",
       link: "https://mirrors.tuna.tsinghua.edu.cn/",
-      avatar: "https://mirrors.tuna.tsinghua.edu.cn/static/img/logo-small.png"
+      avatar: ""
     }
     - {
       title: "鸠摩搜索",
-      intro: "主题使用指南",
+      intro: "电子书搜索引擎",
       link: "https://www.jiumodiary.com/",
-      avatar: "https://www5.jiumodiary.com/images/front/eleps.png"
+      avatar: ""
     }
     - {
-      title: "Linux快速手册",
-      intro: "工具速查、完整教程",
+      title: "Linux工具快速教程",
+      intro: "工具速查+完整教程",
       link: "https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html",
-      avatar: "https://cdn.pixabay.com/photo/2012/04/26/19/47/penguin-42936_960_720.png"
+      avatar: ""
+    }
+    - {
+      title: "MacWK",
+      intro: "MacOS软件资源",
+      link: "https://macwk.com",
+      avatar: ""
+    }
+    - {
+      title: "果核剥壳",
+      intro: "Windows软件资源",
+      link: "https://www.ghxi.com"
     }
 
   # 当成员头像加载失败时，替换为指定图片
