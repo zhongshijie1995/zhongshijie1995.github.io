@@ -22,7 +22,7 @@ def update_about_ip() -> bool:
     ai = get_about_ip()
     li = get_lan_ip()
     print('about ip', ai)
-    print('lan ip', ai)
+    print('lan ip', li)
     if ai != li:
         with open(ABOUT_PATH, mode='r', encoding='utf-8') as f:
             content = f.read()
