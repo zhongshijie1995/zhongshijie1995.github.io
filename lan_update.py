@@ -44,9 +44,14 @@ def deploy_blog():
         subprocess.call('npx hexo deploy', shell=True),
         subprocess.call('npx hexo clean', shell=True)
     ]
-    print(result)
+    print('Finished update at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
 
 if __name__ == '__main__':
-    if update_about_ip():
-        deploy_blog()
+    while True:
+        try:
+            if update_about_ip():
+                deploy_blog()
+        except:
+            pass
+        time.sleep(3600)
