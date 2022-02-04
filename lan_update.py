@@ -3,8 +3,8 @@ import re
 import os
 import subprocess
 
-BLOG_PATH = r'D:\01-Project\zhongshijie1995.github.io'
-ABOUT_FILE = r'source\about\index.md'
+BLOG_PATH = r'/home/zsj/Desktop/01-Project/zhongshijie1995.github.io'
+ABOUT_FILE = r'source/about/index.md'
 ABOUT_PATH = os.path.join(BLOG_PATH, ABOUT_FILE)
 
 
