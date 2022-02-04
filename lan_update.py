@@ -21,6 +21,8 @@ def get_lan_ip() -> str:
 def update_about_ip() -> bool:
     ai = get_about_ip()
     li = get_lan_ip()
+    print('about ip', ai)
+    print('lan ip', ai)
     if ai != li:
         with open(ABOUT_PATH, mode='r', encoding='utf-8') as f:
             content = f.read()
