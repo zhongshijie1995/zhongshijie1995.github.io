@@ -28,8 +28,8 @@ def get_lan_ip() -> str:
 def update_about_ip() -> bool:
     ai = get_about_ip()
     li = get_lan_ip()
-    show_log('about ip', ai)
-    show_log('lan ip', li)
+    show_log('about ip %s' % ai)
+    show_log('lan ip %s' % li)
     if ai != li:
         with open(ABOUT_PATH, mode='r', encoding='utf-8') as f:
             content = f.read()
@@ -51,7 +51,7 @@ def deploy_blog():
         subprocess.call('npx hexo deploy', shell=True),
         subprocess.call('npx hexo clean', shell=True)
     ]
-    show_log('Finished update at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    show_log('Finished update at %s' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
 
 if __name__ == '__main__':
@@ -62,5 +62,5 @@ if __name__ == '__main__':
         except:
             pass
         
-        show_log('%s 等待1小时' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-        time.sleep(3600)
+        show_log('%s 等待1*5小时' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+        time.sleep(3600*5)
