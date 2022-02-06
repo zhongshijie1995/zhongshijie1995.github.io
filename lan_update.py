@@ -9,6 +9,12 @@ ABOUT_FILE = r'source/about/index.md'
 ABOUT_PATH = os.path.join(BLOG_PATH, ABOUT_FILE)
 
 
+def show_log(msg, **args):
+    with open('lan_update.log', mode='a', encoding='utf-8') as f:
+        f.write(msg, **args)
+        f.write('\n')
+
+
 def get_about_ip() -> str:
     s = requests.get('https://zhongshijie1995.github.io/about/')
     return re.search(r'【.*】', s.content.decode()).group()[1: -1].strip()
@@ -22,8 +28,8 @@ def get_lan_ip() -> str:
 def update_about_ip() -> bool:
     ai = get_about_ip()
     li = get_lan_ip()
-    print('about ip', ai)
-    print('lan ip', li)
+    show_log('about ip', ai)
+    show_log('lan ip', li)
     if ai != li:
         with open(ABOUT_PATH, mode='r', encoding='utf-8') as f:
             content = f.read()
@@ -45,7 +51,7 @@ def deploy_blog():
         subprocess.call('npx hexo deploy', shell=True),
         subprocess.call('npx hexo clean', shell=True)
     ]
-    print('Finished update at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
+    show_log('Finished update at', time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
 
 
 if __name__ == '__main__':
@@ -55,4 +61,6 @@ if __name__ == '__main__':
                 deploy_blog()
         except:
             pass
+        
+        show_log('%s 等待1小时' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         time.sleep(3600)
