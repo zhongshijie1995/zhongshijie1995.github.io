@@ -7,7 +7,7 @@ categories:
   - 小问题
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200921095000.png
 description: SpringBoot单元测试中XXXMapper为null一般出现在
-abbrlink: 30001
+abbrlink: 30003
 date: 2020-09-19 22:12:00
 ---
 
