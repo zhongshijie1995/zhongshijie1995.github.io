@@ -20,8 +20,8 @@ date: 2022-01-13 22:01:00
 1. 在你的项目目录下创建如下目录结构，其中`.github`即是你的持续集成+发布流水线的配置文件
 ![文件结构](https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304001610.png)
 
-2. 填写持续集成流水线
-```CICD for PR.yml
+2. 填写持续集成流水线`CICD for PR.yml`
+```yml
 name: CICD for PR
 
 on:
@@ -106,8 +106,8 @@ jobs:
             cd /home/${{ secrets.DEEPIN_USER }}/Desktop/00-SystemTest/big_boot && sh deploy.sh 02_sys_test
 ```
 
-3. 填写持续部署流水线
-```CD for release.yml
+3. 填写持续部署流水线`CD for release.yml`
+```yml
 name: CD for release
 
 on:
@@ -167,8 +167,8 @@ jobs:
             cd /home/${{ secrets.DEEPIN_USER }}/Desktop/00-Production/big_boot && sh deploy.sh 03_prod
 ```
 
-4. 填写发布草稿配置
-```release-drafter.yml
+4. 填写发布草稿配置`release-drafter.yml`
+```yml
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
@@ -202,5 +202,5 @@ template: |
   $CHANGES
 ```
 
-5. 最后，在此处配置你的隐私变量，对应上述CI/CD的流水线中的变量
+5. 最后，进入你的Github仓库页面，在此处配置你的隐私变量，对应上述CI/CD的流水线中的`${{ secrets.XXXX }}`变量
 ![](https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304003601.png)
