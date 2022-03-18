@@ -59,8 +59,8 @@ if __name__ == '__main__':
         try:
             if update_about_ip():
                 deploy_blog()
-        except:
-            pass
+        except Exception as e:
+            show_log("部署失败 %s" % str(e))
         
         show_log('%s 等待1*5小时' % time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
         time.sleep(3600*5)
