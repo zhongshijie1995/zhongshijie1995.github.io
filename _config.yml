@@ -100,5 +100,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:zhongshijie1995/zhongshijie1995.github.io.git
+  repo: git@git.zhlh6.cn:zhongshijie1995/zhongshijie1995.github.io.git
   branch: public
