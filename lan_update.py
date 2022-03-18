@@ -4,7 +4,7 @@ import os
 import subprocess
 import time
 
-BLOG_PATH = r'/home/zsj/Desktop/01-Project/zhongshijie1995.github.io'
+BLOG_PATH = os.getcwd()
 ABOUT_FILE = r'source/about/index.md'
 ABOUT_PATH = os.path.join(BLOG_PATH, ABOUT_FILE)
 
