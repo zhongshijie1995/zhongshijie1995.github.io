@@ -45,18 +45,9 @@ drop user c##zsj;
 drop tablespace zsj including contents and datafiles CASCADE CONSTRAINTS;
 ```
 
-## 连接Oracle数据库
-### 类DataGrip软件
-1. 安装Oracle驱动后直接按照IP、USER、PWD配置进行连接
-
-### Python (cx_oracle) + OracleClient
-1. 下载 [OracleClient](https://www.oracle.com/database/technologies/instant-client/winx64-64-downloads.html)，将起解压后目录添加至系统环境变量
-2. 为Python环境安装cx_oracle，`pip install cx_oracle`
-
 # MySQL
 ## 安装MySQL数据库
-1. 下载MySQL数据库[安装程序](https://dev.mysql.com/downloads/installer/)
-（或从清华镜像源中[安装程序镜像](https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/)）
+1. 下载MySQL数据库[安装程序](https://dev.mysql.com/downloads/installer/)（或从清华镜像源中[安装程序镜像](https://mirrors.tuna.tsinghua.edu.cn/mysql/downloads/MySQLInstaller/)）
 2. 通过msi进行安装，填写必要的信息，**选择Server Only选项**
 3. 打开`MySQLX.X Command Line Client`，执行如下命令
 ```SQL
