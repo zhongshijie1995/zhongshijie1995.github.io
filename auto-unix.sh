@@ -6,6 +6,7 @@ echo " ----------- zhongshijie Auto.sh ----------- "
 echo '*****zhongshijie Img Replace Pictures******'
 python3 img-replace.py
 echo '*****zhongshijie Auto Commit******'
+git pull
 git add .
 git commit -m 'AutoCommit'
 git push
