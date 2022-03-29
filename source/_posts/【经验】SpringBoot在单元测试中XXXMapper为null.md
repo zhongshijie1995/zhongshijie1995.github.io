@@ -1,10 +1,10 @@
 ---
-title: 【小问题】SpringBoot单元测试中XXXMapper为null
+title: SpringBoot单元测试中XXXMapper为null
 tags:
   - Java
   - SpringBoot
 categories:
-  - 小问题
+  - 经验
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200921095000.png
 description: SpringBoot单元测试中XXXMapper为null一般出现在
 abbrlink: 30003

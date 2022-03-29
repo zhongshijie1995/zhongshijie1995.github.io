@@ -1,11 +1,11 @@
 ---
-title: 【小教程】Python+Selenium网页操作自动化
+title: Python+Selenium网页操作自动化
 tags:
   - Python
   - Selenium
   - 自动化
 categories:
-  - 小教程
+  - 教程
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20200919235000.jpg
 description: 用Python+Selenium让一切繁琐的网页操作自动化
 abbrlink: 20002

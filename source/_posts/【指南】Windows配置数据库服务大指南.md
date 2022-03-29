@@ -1,5 +1,5 @@
 ---
-title: 【大指南】Windows配置多种数据库环境
+title: Windows配置多种数据库环境
 date: 2020-03-16 22:01:00
 tags:
   - Windows
@@ -8,7 +8,7 @@ tags:
   - MongoDB
   - VMware
 categories:
-  - 大指南
+  - 指南
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213124100.jpg
 description: 一步一步在Windows中配置各种数据库服务的实验环境，建造于VMware中使得它随时可以移植起其他硬件设备继续实验
 abbrlink: 10003

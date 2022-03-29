@@ -1,14 +1,15 @@
 ---
-title: 【小教程】在Github中搭建属于自己的CICD流水线
+title: 在Github中搭建项目CI/CD流水线
 tags:
   - DevOps
+  - Github
 categories:
-  - 小教程
+  - 指南
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304001311.png
-description: Github Action免费为我们提供了性能优异的跨国DevOps流水线运行代理机器
+description: GithubAction免费为我们提供了性能优异的跨国DevOps流水线运行代理机器，我们可以利用通过MarketPlace丰富的插件库定制CI/CD流水线对自己的Github项目进行质量控制、自动部署。
 abbrlink: 20001
 date: 2022-01-13 22:01:00
-
+sticky: 99
 ---
 
 在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 您可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI/CD），并将操作合并到完全自定义的工作流程中。让你的Github仓库中提交代码拉取请求后能自动的单元测试、通过代码覆盖率门禁、自动的部署测试和生产，并可以提供精美的发版说明。
