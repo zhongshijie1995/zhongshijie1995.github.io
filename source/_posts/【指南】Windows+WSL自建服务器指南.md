@@ -60,9 +60,10 @@ sticky: 100
   ```powershell
   # 关闭虚拟机
   wsl --terminate Ubuntu
-
-  # 在diskpart中进行虚拟磁盘压缩
-  select vdisk file="C:\Users\用户名\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx"
+  ```
+2. 通过`Powershell`运行`diskpart`进入磁盘管理工具命令行内，再输入如下内容进行磁盘压缩
+  ```shell
+  select vdisk file="C:\Users\【用户名】\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx"
   compact vdisk
   ```
 
@@ -134,4 +135,13 @@ export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/node-v16.14.2-linux-x64/bin
   ```shell
   git config --global user.name "zhongshijie"
   git config --global user.email "zhongshijie1995@outlook.com"
+  ```
+
+## 运行exe在宿主计算机上
+1. WSL2在执行`.exe`文件时会自动使用宿主计算机Windows来运行，所以要想运行宿主计算机的应用程序，直接运行它即可：
+  ```shell
+  # 创建一个快捷方式在WSL中
+  ln -s '/mnt/c/Program Files (x86)/ToDesk/ToDesk.exe' /home/zsj/WindowsApp/ToDesk.exe
+  # 直接运行快捷方式
+  /home/zsj/WindowsApp/ToDesk.exe
   ```
