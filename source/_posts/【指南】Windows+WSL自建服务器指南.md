@@ -62,12 +62,12 @@ sticky: 100
   wsl --terminate Ubuntu
 
   # 在diskpart中进行虚拟磁盘压缩
-  select vdisk file="C:\Users\用户名\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04LTS_79rhkp1fndgsc\LocalState\ext4.vhdx"
+  select vdisk file="C:\Users\用户名\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx"
   compact vdisk
   ```
 
-## 显卡驱动（NVIDIA + CUDA）
-1. 安装英伟达官方显卡
+## (可选）显卡驱动（NVIDIA + CUDA）
+1. 下载并安装[英伟达官方显卡驱动](https://www.nvidia.cn/Download/index.aspx?lang=cn)
 
 # WSL配置
 ## SSH
