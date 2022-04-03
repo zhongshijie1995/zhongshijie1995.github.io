@@ -17,7 +17,8 @@ def show_log(msg, **args):
 
 def get_about_ip() -> str:
     s = requests.get('https://zhongshijie1995.github.io/about/')
-    return re.search(r'【.*】', s.content.decode()).group()[1: -1].strip()
+    match_tag = r'href="http://.*:.*/">动态地址</a>'
+    return re.search(match_tag, s.content.decode()).group(0)[13: -16].strip()
 
 
 def get_lan_ip() -> str:

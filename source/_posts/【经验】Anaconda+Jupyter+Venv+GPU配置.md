@@ -79,6 +79,18 @@ date: 2022-03-29 13:01:00
   ```shell
   conda activate 【要切换的虚拟环境名】
   ```
+## 将自己创建的虚拟环境添加到Jupyter
+1. 创建虚拟环境。
+  ```shell
+  conda create -n 虚拟环境名 python=3.6
+  ```
+2. 在此虚拟环境中安装内核。
+  ```shell
+  conda activate 虚拟环境名
+  conda install ipykernel
+  conda install nb_conda
+  ```
+3. 在`jupyter`的`Conda`中可见虚拟环境，若启动失败，则需要检查`pip list`和可用环境中的是否有依赖版本差异，着重检查跟`jupyter`有关的内容。
 
 ## Pytroch+GPU
 1. 使用`conda`源安装`pytorch`，它将会自动帮助我们匹配安装`cudatoolkit`。
@@ -116,3 +128,17 @@ date: 2022-03-29 13:01:00
   t3 = time.time()
   print('[%s]运行时间[%s](不含CUDA初始化），运行结果[%s]' % (a.device, t3 - t0, c.norm(2)))
   ```
+
+## jupyter_contrib_nbextensions
+1. 通过以下命令安装`jupyter`和启用扩展配置。
+  ```shell
+  pip install jupyter_contrib_nbextensions
+  jupyter contrib nbextension install --user
+  pip install jupyter_nbextensions_configurator
+  jupyter nbextensions_configurator enable --user
+  ```
+2. 根据需要在`Nbextensions`开启扩展。
+  - `Table of Contents (2)` 笔记本目录
+  - `Collapsible Headings` 笔记本目录折叠
+  - `Codefolding` 代码折叠
+  - `Hinterland` 代码编辑提示
