@@ -112,6 +112,15 @@ sticky: 100
   # OpenJDK11
   export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/jdk-11.0.14.1+1/bin
   ```
+3. 修改 `Maven`的`setting.xml`依赖源为阿里云镜像
+  ```xml
+  <mirror>
+    <id>nexus-aliyun</id>
+    <mirrorOf>*</mirrorOf>
+    <name>Nexus aliyun</name>
+    <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+  </mirror>
+  ```
 
 ## Anaconda（Python）
 1. 下载[Anaconda3](https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh)运行安装，在安装阶段已经包含添加环境变量的配置。
@@ -119,10 +128,14 @@ sticky: 100
 ## NodeJS
 1. 下载[NodeJS16](https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v16.14.2/node-v16.14.2-linux-x64.tar.xz)并解压。
 2. 添加环境变量到`.bashrc`。
-```shell
-# NodeJS16
-export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/node-v16.14.2-linux-x64/bin
-```
+  ```shell
+  # NodeJS16
+  export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/node-v16.14.2-linux-x64/bin
+  ```
+3. 修改`npm`的依赖源为淘宝镜像
+  ```shell
+  npm config set registry http://registry.npm.taobao.org/
+  ```
 
 ## Github
 1. 通过`ssh-keygen-t`生成密钥对
