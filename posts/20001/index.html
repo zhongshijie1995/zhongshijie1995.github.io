@@ -1,0 +1,549 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/add_source/00-round-avatar.png">
+  <link rel="icon" href="/add_source/00-round-avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="钟世杰">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="GithubAction免费为我们提供了性能优异的跨国DevOps流水线运行代理机器，我们可以利用通过MarketPlace丰富的插件库定制CI&#x2F;CD流水线对自己的Github项目进行质量控制、自动部署。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Github中搭建项目CI&#x2F;CD流水线">
+<meta property="og:url" content="https://zhongshijie1995.github.io/posts/20001/index.html">
+<meta property="og:site_name" content="世杰的专栏">
+<meta property="og:description" content="GithubAction免费为我们提供了性能优异的跨国DevOps流水线运行代理机器，我们可以利用通过MarketPlace丰富的插件库定制CI&#x2F;CD流水线对自己的Github项目进行质量控制、自动部署。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304001311.png">
+<meta property="article:published_time" content="2022-01-13T14:01:00.000Z">
+<meta property="article:modified_time" content="2022-06-03T09:39:01.099Z">
+<meta property="article:author" content="钟世杰">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="Github">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304001311.png">
+  
+  
+  <title>在Github中搭建项目CI/CD流水线 - 世杰的专栏</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhongshijie1995.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>世杰的专栏</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/add_source/00-top-img.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="在Github中搭建项目CI/CD流水线">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      钟世杰
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-13 22:01" pubdate>
+        2022年1月13日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      43 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">在Github中搭建项目CI/CD流水线</h1>
+            
+            <div class="markdown-body">
+              <p>在 GitHub Actions 的仓库中自动化、自定义和执行软件开发工作流程。 您可以发现、创建和共享操作以执行您喜欢的任何作业（包括 CI&#x2F;CD），并将操作合并到完全自定义的工作流程中。让你的Github仓库中提交代码拉取请求后能自动的单元测试、通过代码覆盖率门禁、自动的部署测试和生产，并可以提供精美的发版说明。<br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304002810.png" srcset="/img/loading.gif" lazyload><br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304003343.png" srcset="/img/loading.gif" lazyload></p>
+<blockquote>
+<p>对于Github Action最好的学习使用方法，我推荐直接从套用世杰提供的<code>DevOps</code>模版开始，假如填写时有地方看不懂，再查看<a target="_blank" rel="noopener" href="https://docs.github.com/cn/actions">官方文档</a></p>
+</blockquote>
+<h1 id="基于Springboot的应用程序持续集成-发布模版"><a href="#基于Springboot的应用程序持续集成-发布模版" class="headerlink" title="基于Springboot的应用程序持续集成+发布模版"></a>基于Springboot的应用程序持续集成+发布模版</h1><ol>
+<li><p>在你的项目目录下创建如下目录结构，其中<code>.github</code>即是你的持续集成+发布流水线的配置文件<br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304001610.png" srcset="/img/loading.gif" lazyload alt="文件结构"></p>
+</li>
+<li><p>填写持续集成流水线<code>CICD for PR.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">CICD</span> <span class="hljs-string">for</span> <span class="hljs-string">PR</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">pull_request:</span><br>    <span class="hljs-attr">branches:</span> [ <span class="hljs-string">main</span> ]<br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> [ <span class="hljs-string">main</span> ]<br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-comment"># 准备步骤</span><br>  <span class="hljs-attr">prepare:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">outputs:</span><br>      <span class="hljs-attr">myhost:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">steps.get-my-host.outputs.host_ip</span> <span class="hljs-string">&#125;&#125;</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">get-my-host</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">&quot;::set-output name=host_ip::$(curl https://zhongshijie1995.github.io/about/ | grep -m1 -o &quot;</span><span class="hljs-string">【.*】&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">tr</span> <span class="hljs-string">-d</span> [<span class="hljs-string">&#x27;【】&#x27;</span>]<span class="hljs-string">)&quot;</span><br>  <span class="hljs-comment"># 构建步骤</span><br>  <span class="hljs-attr">build:</span><br>    <span class="hljs-comment"># 运行环境</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-comment"># 前置步骤</span><br>    <span class="hljs-attr">needs:</span> <span class="hljs-string">prepare</span><br>    <span class="hljs-comment"># 执行步骤</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-comment"># 打印我的地址</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Print</span> <span class="hljs-string">my</span> <span class="hljs-string">host</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>      <span class="hljs-comment"># 拉取代码</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>      <span class="hljs-comment"># 设置构建参数</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">JDK</span> <span class="hljs-number">11</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-java@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">java-version:</span> <span class="hljs-string">&#x27;11&#x27;</span><br>          <span class="hljs-attr">distribution:</span> <span class="hljs-string">&#x27;temurin&#x27;</span><br>          <span class="hljs-attr">cache:</span> <span class="hljs-string">maven</span><br>      <span class="hljs-comment"># 通过maven clean install构建</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">with</span> <span class="hljs-string">Maven</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">mvn</span> <span class="hljs-string">-B</span> <span class="hljs-string">clean</span> <span class="hljs-string">install</span><br>      <span class="hljs-comment"># 生成单元测试报告（always）</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">JUnit</span> <span class="hljs-string">Report</span> <span class="hljs-string">Action</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">mikepenz/action-junit-report@v2.8.4</span><br>        <span class="hljs-attr">if:</span> <span class="hljs-string">always()</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">report_paths:</span> <span class="hljs-string">&#x27;**/TEST-*.xml&#x27;</span><br>      <span class="hljs-comment"># 生成覆盖率到拉取请求的评论区</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Add</span> <span class="hljs-string">coverage</span> <span class="hljs-string">to</span> <span class="hljs-string">PR</span><br>        <span class="hljs-attr">id:</span> <span class="hljs-string">jacoco</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">madrapps/jacoco-report@v1.2</span><br>        <span class="hljs-attr">if:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">github.event_name</span> <span class="hljs-string">==</span> <span class="hljs-string">&#x27;pull_request&#x27;</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">paths:</span> <span class="hljs-string">target/site/jacoco/jacoco.xml</span><br>          <span class="hljs-attr">token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">min-coverage-overall:</span> <span class="hljs-number">90</span><br>          <span class="hljs-attr">min-coverage-changed-files:</span> <span class="hljs-number">90</span><br>      <span class="hljs-comment"># 加入发版草稿</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Add</span> <span class="hljs-string">release</span> <span class="hljs-string">draft</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">release-drafter/release-drafter@v5</span><br>        <span class="hljs-attr">env:</span><br>          <span class="hljs-attr">GITHUB_TOKEN:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>      <span class="hljs-comment"># 上传构件和部署脚本</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">scp</span> <span class="hljs-string">jar</span> <span class="hljs-string">&amp;</span> <span class="hljs-string">deploy.sh</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">cross-the-world/ssh-scp-ssh-pipelines@latest</span><br>        <span class="hljs-attr">if:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">github.event_name</span> <span class="hljs-string">==</span> <span class="hljs-string">&#x27;push&#x27;</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">host:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">user:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">pass:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_PASSWORD</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">scp:</span> <span class="hljs-string">|</span><br><span class="hljs-string">            ./target/big_boot-*.jar =&gt; /home/$&#123;&#123; secrets.DEEPIN_USER &#125;&#125;/Desktop/00-SystemTest/big_boot/</span><br><span class="hljs-string">            deploy.sh =&gt; /home/$&#123;&#123; secrets.DEEPIN_USER &#125;&#125;/Desktop/00-SystemTest/big_boot/</span><br><span class="hljs-string"></span>      <span class="hljs-comment"># 执行部署脚本</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">run</span> <span class="hljs-string">deploy</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">cross-the-world/ssh-scp-ssh-pipelines@latest</span><br>        <span class="hljs-attr">if:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">github.event_name</span> <span class="hljs-string">==</span> <span class="hljs-string">&#x27;push&#x27;</span> <span class="hljs-string">&#125;&#125;</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">host:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">user:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">pass:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_PASSWORD</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">last_ssh:</span> <span class="hljs-string">|</span><br>            <span class="hljs-string">cd</span> <span class="hljs-string">/home/$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;/Desktop/00-SystemTest/big_boot</span> <span class="hljs-string">&amp;&amp;</span> <span class="hljs-string">sh</span> <span class="hljs-string">deploy.sh</span> <span class="hljs-string">02_sys_test</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>填写持续部署流水线<code>CD for release.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">CD</span> <span class="hljs-string">for</span> <span class="hljs-string">release</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">release:</span><br>    <span class="hljs-attr">types:</span> [ <span class="hljs-string">published</span> ]<br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-comment"># 准备步骤</span><br>  <span class="hljs-attr">prepare:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">outputs:</span><br>      <span class="hljs-attr">myhost:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">steps.get-my-host.outputs.host_ip</span> <span class="hljs-string">&#125;&#125;</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">id:</span> <span class="hljs-string">get-my-host</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">&quot;::set-output name=host_ip::$(curl https://zhongshijie1995.github.io/about/ | grep -m1 -o &quot;</span><span class="hljs-string">【.*】&quot;</span> <span class="hljs-string">|</span> <span class="hljs-string">tr</span> <span class="hljs-string">-d</span> [<span class="hljs-string">&#x27;【】&#x27;</span>]<span class="hljs-string">)&quot;</span><br>  <span class="hljs-comment"># 构建步骤</span><br>  <span class="hljs-attr">build:</span><br>    <span class="hljs-comment"># 运行环境</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-comment"># 前置步骤</span><br>    <span class="hljs-attr">needs:</span> <span class="hljs-string">prepare</span><br>    <span class="hljs-comment"># 执行步骤</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-comment"># 打印我的地址</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Print</span> <span class="hljs-string">my</span> <span class="hljs-string">host</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>      <span class="hljs-comment"># 拉取代码</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span><br>      <span class="hljs-comment"># 设置构建参数</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">JDK</span> <span class="hljs-number">11</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-java@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">java-version:</span> <span class="hljs-string">&#x27;11&#x27;</span><br>          <span class="hljs-attr">distribution:</span> <span class="hljs-string">&#x27;temurin&#x27;</span><br>          <span class="hljs-attr">cache:</span> <span class="hljs-string">maven</span><br>      <span class="hljs-comment"># 通过maven clean install构建</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">with</span> <span class="hljs-string">Maven</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">mvn</span> <span class="hljs-string">-B</span> <span class="hljs-string">clean</span> <span class="hljs-string">package</span><br>      <span class="hljs-comment"># 上传构件和部署脚本</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">scp</span> <span class="hljs-string">jar</span> <span class="hljs-string">&amp;</span> <span class="hljs-string">deploy.sh</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">cross-the-world/ssh-scp-ssh-pipelines@latest</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">host:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">user:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">pass:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_PASSWORD</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">scp:</span> <span class="hljs-string">|</span><br><span class="hljs-string">            ./target/big_boot-*.jar =&gt; /home/$&#123;&#123; secrets.DEEPIN_USER &#125;&#125;/Desktop/00-Production/big_boot/</span><br><span class="hljs-string">            deploy.sh =&gt; /home/$&#123;&#123; secrets.DEEPIN_USER &#125;&#125;/Desktop/00-Production/big_boot/</span><br><span class="hljs-string"></span>      <span class="hljs-comment"># 执行部署脚本</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">run</span> <span class="hljs-string">deploy</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">cross-the-world/ssh-scp-ssh-pipelines@latest</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">host:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">needs.prepare.outputs.myhost</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">user:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">pass:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_PASSWORD</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">last_ssh:</span> <span class="hljs-string">|</span><br>            <span class="hljs-string">cd</span> <span class="hljs-string">/home/$&#123;&#123;</span> <span class="hljs-string">secrets.DEEPIN_USER</span> <span class="hljs-string">&#125;&#125;/Desktop/00-Production/big_boot</span> <span class="hljs-string">&amp;&amp;</span> <span class="hljs-string">sh</span> <span class="hljs-string">deploy.sh</span> <span class="hljs-string">03_prod</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>填写发布草稿配置<code>release-drafter.yml</code></p>
+<figure class="highlight yml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs yml"><span class="hljs-attr">name-template:</span> <span class="hljs-string">&#x27;v$RESOLVED_VERSION 🌈&#x27;</span><br><span class="hljs-attr">tag-template:</span> <span class="hljs-string">&#x27;v$RESOLVED_VERSION&#x27;</span><br><span class="hljs-attr">categories:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;🚀 Features&#x27;</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;feature&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;enhancement&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;🐛 Bug Fixes&#x27;</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;fix&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;bugfix&#x27;</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;bug&#x27;</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">title:</span> <span class="hljs-string">&#x27;🧰 Maintenance&#x27;</span><br>    <span class="hljs-attr">label:</span> <span class="hljs-string">&#x27;chore&#x27;</span><br><span class="hljs-attr">change-template:</span> <span class="hljs-string">&#x27;- $TITLE @$AUTHOR (#$NUMBER)&#x27;</span><br><span class="hljs-attr">change-title-escapes:</span> <span class="hljs-string">&#x27;\&lt;*_&amp;&#x27;</span> <span class="hljs-comment"># You can add # and @ to disable mentions, and add ` to disable code blocks.</span><br><span class="hljs-attr">version-resolver:</span><br>  <span class="hljs-attr">major:</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;major&#x27;</span><br>  <span class="hljs-attr">minor:</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;minor&#x27;</span><br>  <span class="hljs-attr">patch:</span><br>    <span class="hljs-attr">labels:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">&#x27;patch&#x27;</span><br>  <span class="hljs-attr">default:</span> <span class="hljs-string">patch</span><br><span class="hljs-attr">template:</span> <span class="hljs-string">|</span><br><span class="hljs-string">  ## Changes</span><br><span class="hljs-string"></span><br>  <span class="hljs-string">$CHANGES</span><br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>最后，进入你的Github仓库页面，在此处配置你的隐私变量，对应上述CI&#x2F;CD的流水线中的<code>$&#123;&#123; secrets.XXXX &#125;&#125;</code>变量<br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220304003601.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8C%87%E5%8D%97/">指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/DevOps/">DevOps</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Github/">Github</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/20003/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows+WSL2自建专属个人服务器</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/20002/">
+                        <span class="hidden-mobile">Python+Selenium网页操作自动化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"RsWKIq7id8U0Wg61EEUVEkUr-gzGzoHsz","appKey":"shK7uqBTgiPOoABdIUMFOQ74","path":"window.location.pathname","placeholder":"留言","avatar":"retro","meta":["nick","mail"],"requiredFields":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":"flase"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://zhongshijie1995.github.io/add_source/00-wechat-reward.jpg" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> 钟世杰 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

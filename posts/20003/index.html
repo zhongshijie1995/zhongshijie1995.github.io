@@ -1,0 +1,608 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=dark>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/add_source/00-round-avatar.png">
+  <link rel="icon" href="/add_source/00-round-avatar.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="钟世杰">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="WSL2是Windows内建的Linux子系统，带来真正无缝双系统的体验，在宽带申请公网IP后，我们可以将Windows的Linux子系统装备成一个独立精悍的个人服务器。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows+WSL2自建专属个人服务器">
+<meta property="og:url" content="https://zhongshijie1995.github.io/posts/20003/index.html">
+<meta property="og:site_name" content="世杰的专栏">
+<meta property="og:description" content="WSL2是Windows内建的Linux子系统，带来真正无缝双系统的体验，在宽带申请公网IP后，我们可以将Windows的Linux子系统装备成一个独立精悍的个人服务器。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220322221801.png">
+<meta property="article:published_time" content="2022-03-11T13:20:00.000Z">
+<meta property="article:modified_time" content="2022-06-03T09:39:01.099Z">
+<meta property="article:author" content="钟世杰">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="WSL2">
+<meta property="article:tag" content="CUDA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220322221801.png">
+  
+  
+  <title>Windows+WSL2自建专属个人服务器 - 世杰的专栏</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/androidstudio.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"zhongshijie1995.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>世杰的专栏</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/add_source/00-top-img.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Windows+WSL2自建专属个人服务器">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-author" aria-hidden="true"></i>
+      钟世杰
+    </span>
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-11 21:20" pubdate>
+        2022年3月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Windows+WSL2自建专属个人服务器</h1>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>通过启用Windows10或者Windows11中的WSL2的Ubuntu，在Ubuntu中构建一个属于自己的Linux服务器。</p>
+</blockquote>
+<h1 id="宿主计算机配置"><a href="#宿主计算机配置" class="headerlink" title="宿主计算机配置"></a>宿主计算机配置</h1><h2 id="开启WSL2"><a href="#开启WSL2" class="headerlink" title="开启WSL2"></a>开启WSL2</h2><ol>
+<li>通过Windows的“启用或关闭Windows功能”开启Linux子系统功能：</li>
+</ol>
+<ul>
+<li>勾选“适用于Linux的Windows子系统”</li>
+<li>勾选“虚拟机平台”<br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220329083615.png" srcset="/img/loading.gif" lazyload alt="启用或关闭Windows功能"></li>
+</ul>
+<ol start="2">
+<li>配置WSL使用的版本为WSL2。</li>
+</ol>
+<ul>
+<li>安装<a target="_blank" rel="noopener" href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">WSL2内核</a></li>
+<li>在PowerShell中运行命令：<figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell">wsl <span class="hljs-literal">--set-default-version</span> <span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<ol start="3">
+<li>通过Windows的“应用商店”安装如下内容：</li>
+</ol>
+<ul>
+<li>安装“Ubuntu”<br><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220329084250.png" srcset="/img/loading.gif" lazyload alt="应用商店"></li>
+</ul>
+<h2 id="WSL自启动"><a href="#WSL自启动" class="headerlink" title="WSL自启动"></a>WSL自启动</h2><ol>
+<li>在Windows用户开机启动目录中添加<code>C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup</code>文件<code>linux-start.vbs</code>，文件内容如下：  <figure class="highlight vb"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs vb"><span class="hljs-keyword">Set</span> ws = WScript.CreateObject(<span class="hljs-string">&quot;WScript.Shell&quot;</span>)        <br>ws.run <span class="hljs-string">&quot;wsl -d Ubuntu -u root /etc/init.wsl&quot;</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>上述文件内容包含如下信息：<ul>
+<li>指定<code>linux-start.vbs</code>为Windows启动时运行的程序；</li>
+<li><code>vbs</code>中运行<code>Ubuntu</code>的WSL内的<code>/etc/init.wsl</code>，指定<code>-u root</code>执行运行的用户。</li>
+<li><code>vbs</code>中运行<code>Ubuntu</code>的WSL内的<code>/etc/init.wsl</code>，所以，我们需要提前在WSL2中创建好该文件，内容为需要开机启动的项目）。</li>
+</ul>
+</li>
+</ul>
+<h2 id="端口监听"><a href="#端口监听" class="headerlink" title="端口监听"></a>端口监听</h2><ol>
+<li>通过Windows自带的<code>netsh</code>工具的端口代理功能，可以讲将WSL2的内部监听端口作用在宿主计算机上，达到端口转发的效果。    <figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 查看所有端口代理</span><br>netsh interface portproxy show all<br><span class="hljs-comment"># 增加一个IPV4到IPV4的端口代理</span><br>netsh interface portproxy add v4tov4 listenport=外部端口 connectaddress=localhost connectport=内部端口<br><span class="hljs-comment"># 增加一个IPV4到IPV6的端口代理</span><br>netsh interface portproxy add v4tov6 listenport=外部端口 connectaddress=localhost connectport=内部端口<br><span class="hljs-comment"># 删除指定的端口代理</span><br>netsh interface portproxy delete v4tov4 listenport=外部端口<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="释放磁盘"><a href="#释放磁盘" class="headerlink" title="释放磁盘"></a>释放磁盘</h2><ol>
+<li>由于WSL2的特殊设计，其使用过的磁盘空间需要<strong>宿主计算机</strong>中通过如下命令才可以真正释放。  <figure class="highlight powershell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs powershell"><span class="hljs-comment"># 关闭虚拟机</span><br>wsl <span class="hljs-literal">--terminate</span> Ubuntu<br></code></pre></div></td></tr></table></figure></li>
+<li>通过<code>Powershell</code>运行<code>diskpart</code>进入磁盘管理工具命令行内，再输入如下内容进行磁盘压缩  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">select vdisk file=&quot;C:\Users\【用户名】\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu_79rhkp1fndgsc\LocalState\ext4.vhdx&quot;<br>compact vdisk<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="可选）显卡驱动（NVIDIA-CUDA）"><a href="#可选）显卡驱动（NVIDIA-CUDA）" class="headerlink" title="(可选）显卡驱动（NVIDIA + CUDA）"></a>(可选）显卡驱动（NVIDIA + CUDA）</h2><ol>
+<li>下载并安装<a target="_blank" rel="noopener" href="https://www.nvidia.cn/Download/index.aspx?lang=cn">英伟达官方显卡驱动</a></li>
+</ol>
+<h1 id="WSL配置"><a href="#WSL配置" class="headerlink" title="WSL配置"></a>WSL配置</h1><h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><ol>
+<li>安装OpenSSH <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo apt autoremove openssh-server<br>sudo apt install openssh-server<br></code></pre></div></td></tr></table></figure></li>
+<li>配置OpenSSH</li>
+</ol>
+<ul>
+<li>编辑文件<code>/etc/ssh/sshd_config</code>的如下配置：<figure class="highlight plaintext"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs conf"># 将监听端口定在222用于将22预留给宿主计算机暴露给外部网络<br>Port 222<br># 在IPV4上进行监听<br>ListenAddress 0.0.0.0<br># 允许公钥进行登录<br>PubkeyAuthentication yes<br># 运行密码进行登录<br>PasswordAuthentication yes<br># 指定公钥存储目录<br>AuthorizedKeysFile .ssh/authorized_keys<br></code></pre></div></td></tr></table></figure></li>
+<li>重新启动服务。<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">sudo service ssh restart<br></code></pre></div></td></tr></table></figure></li>
+<li>（可选）在可信设备中，通过<code>ssh-copy-id</code>将公钥传入WSL配置免密登录。<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">ssh-copy-id 用户名@地址 -p 端口<br></code></pre></div></td></tr></table></figure></li>
+<li>编辑<code>/etc/init.wsl</code>，将启动SSH作添加到Windows开机自启动脚本中。<figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">! /bin/sh</span><br>/etc/init.d/ssh start<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h2 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h2><ol>
+<li>下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/AdoptOpenJDK/11/jdk/x64/linux/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14.1_1.tar.gz">OpenJDK11</a>并解压。</li>
+<li>添加环境变量到<code>.bashrc</code>。  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">OpenJDK11</span><br>export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/jdk-11.0.14.1+1/bin<br></code></pre></div></td></tr></table></figure></li>
+<li>修改 <code>Maven</code>的<code>setting.xml</code>依赖源为阿里云镜像  <figure class="highlight xml"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">mirror</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>nexus-aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">mirrorOf</span>&gt;</span>*<span class="hljs-tag">&lt;/<span class="hljs-name">mirrorOf</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Nexus aliyun<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="hljs-tag">&lt;/<span class="hljs-name">url</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">mirror</span>&gt;</span><br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="Anaconda（Python）"><a href="#Anaconda（Python）" class="headerlink" title="Anaconda（Python）"></a>Anaconda（Python）</h2><ol>
+<li>下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2021.11-Linux-x86_64.sh">Anaconda3</a>运行安装，在安装阶段已经包含添加环境变量的配置。</li>
+</ol>
+<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><ol>
+<li>下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/nodejs-release/v16.14.2/node-v16.14.2-linux-x64.tar.xz">NodeJS16</a>并解压。</li>
+<li>添加环境变量到<code>.bashrc</code>。  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">NodeJS16</span><br>export PATH=$PATH:/home/zsj/Desktop/00-DevBuild/node-v16.14.2-linux-x64/bin<br></code></pre></div></td></tr></table></figure></li>
+<li>修改<code>npm</code>的依赖源为淘宝镜像  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">npm config set registry http://registry.npm.taobao.org/<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h2><ol>
+<li>通过<code>ssh-keygen-t</code>生成密钥对  <figure class="highlight ebnf"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs ebnf"><span class="hljs-attribute">ssh-keygen -t rsa</span><br></code></pre></div></td></tr></table></figure></li>
+<li>读出<code>~/.ssh/id_rsa.pub</code>内的公钥，将其添加到Github账户中<br>  <img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20220329104826.png" srcset="/img/loading.gif" lazyload alt="Github公钥"></li>
+<li>配置Git本地作者信息  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell">git config --global user.name &quot;zhongshijie&quot;<br>git config --global user.email &quot;zhongshijie1995@outlook.com&quot;<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+<h2 id="运行exe在宿主计算机上"><a href="#运行exe在宿主计算机上" class="headerlink" title="运行exe在宿主计算机上"></a>运行exe在宿主计算机上</h2><ol>
+<li>WSL2在执行<code>.exe</code>文件时会自动使用宿主计算机Windows来运行，所以要想运行宿主计算机的应用程序，直接运行它即可：  <figure class="highlight shell"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">创建一个快捷方式在WSL中</span><br>ln -s &#x27;/mnt/c/Program Files (x86)/ToDesk/ToDesk.exe&#x27; /home/zsj/WindowsApp/ToDesk.exe<br><span class="hljs-meta prompt_"># </span><span class="language-bash">直接运行快捷方式</span><br>/home/zsj/WindowsApp/ToDesk.exe<br></code></pre></div></td></tr></table></figure></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E6%8C%87%E5%8D%97/">指南</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Windows/">Windows</a>
+                    
+                      <a class="hover-with-bg" href="/tags/WSL2/">WSL2</a>
+                    
+                      <a class="hover-with-bg" href="/tags/CUDA/">CUDA</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/posts/30004/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Anaconda+JupyterNotebook+Venv+GPU配置</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/posts/20001/">
+                        <span class="hidden-mobile">在Github中搭建项目CI/CD流水线</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"RsWKIq7id8U0Wg61EEUVEkUr-gzGzoHsz","appKey":"shK7uqBTgiPOoABdIUMFOQ74","path":"window.location.pathname","placeholder":"留言","avatar":"retro","meta":["nick","mail"],"requiredFields":["nick","mail"],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":"flase"},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://zhongshijie1995.github.io/add_source/00-wechat-reward.jpg" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <i class="iconfont icon-love"></i> 钟世杰 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
