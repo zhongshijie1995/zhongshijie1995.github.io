@@ -4,7 +4,7 @@ cd ../zhongshijie-pic
 cd ../zhongshijie1995.github.io
 echo " ----------- zhongshijie Auto.sh ----------- "
 echo '*****zhongshijie Img Replace Pictures******'
-python3 img-replace.py
+python img-replace.py
 echo '*****zhongshijie Auto Commit******'
 git pull
 git add .
