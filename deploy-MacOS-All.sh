@@ -7,4 +7,4 @@ cd ../zhongshijie-pic && git pull && git add .&& git commit -m 'AutoCommit' && g
 # 提交博客仓库代码
 cd ../zhongshijie1995.github.io && git pull && git add .&& git commit -m 'AutoCommit' && git push
 # 部署博客
-npx hexo clean && npx hexo deploy && npx clean
+npx hexo clean && npx hexo g && npx hexo deploy && npx clean
