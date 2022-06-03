@@ -8,7 +8,7 @@
     <link href="/posts/30005/"/>
     <url>/posts/30005/</url>
     
-    <content type="html"><![CDATA[<table><thead><tr><th>注解</th><th>用途</th><th>备注</th></tr></thead><tbody><tr><td>@CrossOrigin</td><td>跨域(CORS)支持</td><td>SpringMVC-4.2或以上版本支持</td></tr></tbody></table>]]></content>
+    <content type="html"><![CDATA[<table><thead><tr><th>注解</th><th>用途</th><th>备注</th></tr></thead><tbody><tr><td>@CrossOrigin</td><td>跨域(CORS)支持</td><td>SpringMVC-4.2或以上版本支持</td></tr></tbody></table><p><img src="/img/20220416112100.png"></p>]]></content>
     
     
     <categories>
@@ -230,6 +230,33 @@
   
   
   <entry>
+    <title>Notepad++ 7.9.2 无法设置中文？</title>
+    <link href="/posts/30001/"/>
+    <url>/posts/30001/</url>
+    
+    <content type="html"><![CDATA[<h2 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h2><p>使用Notepad++ 7.9.2，将“首选项”-“常用”-“页面语言”设置为“简体中文”后无法生效。</p><h2 id="症结和解决方案"><a href="#症结和解决方案" class="headerlink" title="症结和解决方案"></a>症结和解决方案</h2><p>找到安装目录下的如下文件<code>XXX\localization\chineseSimplified.xml</code>，你就会发现在第852行的XML节点是非对应的，就是这个原因导致了无法设置简体中文作为语言环境，只需要将852行的XML节点改为正确，便可以正常使用了。</p><p><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213131811.png" alt="NotePad++7.9.2作者刻意留下的bug"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>经验</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+      <tag>Notepad++</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>轻快的深度学习图像目标检测</title>
     <link href="/posts/40001/"/>
     <url>/posts/40001/</url>
@@ -251,33 +278,6 @@
       <tag>深度学习</tag>
       
       <tag>图像目标检测</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Notepad++ 7.9.2 无法设置中文？</title>
-    <link href="/posts/30001/"/>
-    <url>/posts/30001/</url>
-    
-    <content type="html"><![CDATA[<h2 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h2><p>使用Notepad++ 7.9.2，将“首选项”-“常用”-“页面语言”设置为“简体中文”后无法生效。</p><h2 id="症结和解决方案"><a href="#症结和解决方案" class="headerlink" title="症结和解决方案"></a>症结和解决方案</h2><p>找到安装目录下的如下文件<code>XXX\localization\chineseSimplified.xml</code>，你就会发现在第852行的XML节点是非对应的，就是这个原因导致了无法设置简体中文作为语言环境，只需要将852行的XML节点改为正确，便可以正常使用了。</p><p><img src="https://zhongshijie1995.github.io/zhongshijie-pic/img/20210213131811.png" alt="NotePad++7.9.2作者刻意留下的bug"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>经验</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Windows</tag>
-      
-      <tag>Notepad++</tag>
       
     </tags>
     
