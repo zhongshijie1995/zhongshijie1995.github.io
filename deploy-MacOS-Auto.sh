@@ -1,0 +1,1 @@
+cd /Users/zhongshijie/Desktop/01-Project/zhongshijie1995.github.io && /bin/zsh /Users/zhongshijie/Desktop/01-Project/zhongshijie1995.github.io/deploy-MacOS-All.sh
