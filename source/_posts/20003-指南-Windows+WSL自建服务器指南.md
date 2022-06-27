@@ -86,7 +86,7 @@ sticky: 100
     ListenAddress 0.0.0.0
     # 允许公钥进行登录
     PubkeyAuthentication yes
-    # 运行密码进行登录
+    # 允许密码进行登录
     PasswordAuthentication yes
     # 指定公钥存储目录
     AuthorizedKeysFile .ssh/authorized_keys
