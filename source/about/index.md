@@ -8,6 +8,6 @@ layout: about
 >   - 122 For MacOS 
 >   - 123 For Ubuntu
 
-> 我的big_boot项目 [动态地址](http://113.109.216.202:18999)
+> 我的big_boot项目 [动态地址](http://113.109.216.202:19000)
 
-> 我的JupyterNotebook服务 [动态地址](http://113.109.216.202:19000)
+> 我的JupyterNotebook服务 [动态地址](http://113.109.216.202:18999)
