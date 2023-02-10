@@ -5,10 +5,10 @@ layout: about
 ---
 
 ## 我的实时终端
-- IP地址【113.109.216.179】 
+- IP地址【113.109.216.76】 
   - 122 For MacOS 
   - 123 For Ubuntu
 
 ## 我的实时项目：
-- big_boot项目 [动态地址](http://113.109.216.179:19000/big_boot/)
-- JupyterNotebook服务 [动态地址](http://113.109.216.179:18999)
+- big_boot项目 [动态地址](http://113.109.216.76:19000/big_boot/)
+- JupyterNotebook服务 [动态地址](http://113.109.216.76:18999)
