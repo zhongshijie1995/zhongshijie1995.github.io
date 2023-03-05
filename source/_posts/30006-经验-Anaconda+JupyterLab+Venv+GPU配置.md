@@ -101,3 +101,9 @@ date: 2022-03-29 13:01:00
   t3 = time.time()
   print('[%s]运行时间[%s](不含CUDA初始化），运行结果[%s]' % (a.device, t3 - t0, c.norm(2)))
   ```
+
+## 安装插件
+1. 简体中文界面
+  ```shell
+  pip install jupyterlab-language-pack-zh-CN
+  ```
