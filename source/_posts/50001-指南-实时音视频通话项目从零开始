@@ -1,0 +1,79 @@
+---
+title: 实时音视频通话项目从零开始
+tags:
+  - WebRTC
+  - Mediasoup
+  - NodeJS
+  - C++
+categories:
+  - 指南
+index_img: https://mediasoup.org/images/mediasoup-v3-architecture-01.svg
+description: 
+abbrlink: 50001
+date: 2023-03-22 22:01:00
+---
+
+# 集成Mediasoup的客户端和服务端的Demo
+## 1. 构建Mediasoup、Mediasoup-client依赖
+1. 拉取服务端Mediasoup依赖
+  ```shell
+  git clone https://github.com/versatica/mediasoup.git
+  git clone https://github.com/versatica/mediasoup-client.git
+  ```
+2. 编译构建服务端SDK
+  ```shell
+  cd mediasoup && npm install && cd ..
+  cd mediasoup-client && npm install && cd ..
+  ```
+
+## 2. 集成服务端和客户端Demo
+1. 拉取Demo工程
+  ```shell
+  git clone https://github.com/versatica/mediasoup-demo.git
+  cd mediasoup-demo
+  ```
+2. 导入SDK
+  - 去除工程中的Mediasoup、Mediasoup-Client依赖从Github下载的配置
+    1. 删除`server/package.json`中的如下整行内容；
+      `"mediasoup-client": "github:versatica/mediasoup-client#v3",`
+    2. 删除`server/package.json`中的如下整行内容；
+      `"mediasoup": "github:versatica/mediasoup#v3",`
+  - 安装其他依赖
+    ```shell
+    cd app && npm install && cd ..
+    cd server && npm install && cd ..
+    ```
+  - 将我们手动编译构建的SDK移入Node依赖
+    ```
+    cp -r ../mediasoup ./server/node_modules
+    cp -r ../mediasoup-client ./app/node_modules
+    ```
+3. 准备服务配置文件
+  ```
+  cd server && cp config.example.js config.js && cd ..
+  ```
+4. 为服务生成网站证书
+  ```shell
+  # 进入存放证书的目录
+  cd serve && mkdir certs
+  # 生成证书（需要键入证书信息，如国家、城市、邮箱等）
+  openssl req -new -newkey rsa:2048 -x509 -sha256 -days 3650 -nodes -out fullchain.pem -keyout privkey.pem
+  # 回到Demo目录
+  cd ..
+  ```
+5. 启动服务端，保持终端以查看日志（若要后台运行，请学习使用`nohup`）
+  ```shell
+  cd server && npm start
+  ```
+6. 启动客户端，保持终端以查看日志（若要后台运行，请学习使用`nohup`）
+  ```shell
+  cd app && npm start
+  ```
+7. 通过使用`https://localhost:3000`或`http://IP地址:3000`来允许不检查证书访问，然后使用不同设备访问该地址，进入客户端，则不同设备之间即可进行实时音视频通话。
+
+![](https://zhongshijie1995.github.io/zhongshijie-pic/img/20230322222200.jpg)
+
+> 附录（报错提示）
+1. `npm install`过程报错如下：
+  - ![](https://zhongshijie1995.github.io/zhongshijie-pic/img/20230322222200.jpg)
+  - 解决：手动下载`worker/subprojects`中的每个wrap中的列出的资源放置在`worker/subprojects/packagecache`目录下后重试。
