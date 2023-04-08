@@ -10,7 +10,7 @@ if [ "$NowIP" != "$YetIP" ];then
   echo '替换完成！'
 fi
 # cloud页替换
-target_md="add_source/cloud.html"
+target_md="source/add_source/cloud.html"
 NowIP=`curl https://ifconfig.me`
 NowIP=`echo $NowIP | grep -E "((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}"`
 echo '获取到当前外网IP：'$NowIP
@@ -21,7 +21,7 @@ if [ "$NowIP" != "$YetIP" ];then
   echo '替换完成！'
 fi
 # Lab页替换
-target_md="add_source/lab.html"
+target_md="source/add_source/lab.html"
 NowIP=`curl https://ifconfig.me`
 NowIP=`echo $NowIP | grep -E "((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}"`
 echo '获取到当前外网IP：'$NowIP
