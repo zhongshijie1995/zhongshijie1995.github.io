@@ -8,7 +8,7 @@ categories:
   - 经验
 index_img: https://zhongshijie1995.github.io/zhongshijie-pic/img/20220329145923.png
 description: 安装Anaconda默认将会获得Jupyter的能力，在此基础之上，梳理了一些通常作用在科学计算领域的常用配置功能。
-abbrlink: 30004
+abbrlink: 30006
 date: 2022-03-29 13:01:00
 ---
 
